@@ -1,0 +1,15 @@
+{
+  "name": "fullcircle",
+  "version": "1.0.0",
+  "description": "Task Management App",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "keywords": [],
+  "author": "Group One",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^23.1.2"
+  }
+}
