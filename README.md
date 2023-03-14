@@ -15,7 +15,6 @@ To get started with this project, follow these steps:
 1. Clone the repository from Github:
 ``` 
 git clone git@github.com:AlexciaRose/FullCircle.git
-
 ```
 or
 
