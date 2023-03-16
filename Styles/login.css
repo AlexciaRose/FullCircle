@@ -1,0 +1,57 @@
+@font-face {
+    font-family: Inter;
+    src: url("../Fonts/Inter-VariableFont_slnt,wght.ttf");
+}
+
+@font-face {
+    font-family: Roboto;
+    src: url("../Fonts/Roboto-Regular.ttf");
+}
+
+.sideinfo{
+    font-family: 'Inter';
+    font-weight: bold;
+    font-size: 50px;
+    align-self: center;        
+}
+
+.sidebar{
+    background: linear-gradient(rgba(24, 160, 251, 1),rgba(123, 97, 255, 0.82) );
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+    
+form{
+    margin-top: 20%;
+    margin-left: 5%;
+}
+form header{
+    font-family: 'Roboto';
+    font-weight: bold;
+    font-size: 32px;
+}
+
+.form-label{
+    font-size: 14px !important;
+    font-family: 'Inter' !important;
+    margin-top: 16px !important;
+    font-weight: 300;
+}
+
+.form-control::placeholder{
+    font-family: 'Inter' !important;
+    font-weight: lighter;
+    color: rgba(210, 210, 210, 1);
+    font-size: small;
+}
+
+.btn-sign{
+    background-color: rgba(24, 160, 251, 1);
+    color: rgba(255, 255, 255, 1);
+    font-size: 14px;
+    padding-top: 5px;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-weight: 400;
+}
