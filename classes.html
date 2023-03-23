@@ -154,9 +154,18 @@ const classContainer = document.getElementById('class-container');
 const classTemplate = document.querySelector('.class');
 
 addClassButton.addEventListener('click', function() {
-const newClass = classTemplate.cloneNode(true);
-classContainer.appendChild(newClass);
+  // Check if all the required fields have values
+  const allFields = Array.from(classTemplate.querySelectorAll('input, select'));
+  const hasValue = allFields.every(field => field.value !== '');
+  
+  if (hasValue) {
+    const newClass = classTemplate.cloneNode(true);
+    classContainer.appendChild(newClass);
+  } else {
+    alert('Please fill out all fields before adding a new class.');
+  }
 });
+
 
 
 
