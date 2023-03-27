@@ -6,7 +6,7 @@ const createWindow = () => {
       height: 700
     })
   
-    win.loadFile('create.html')
+    win.loadFile('tasks.html')
   }
 
   app.whenReady().then(() => {
