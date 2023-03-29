@@ -12,26 +12,28 @@
     <!--Bootstrap Optional Javascript-->
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 
-    <title>Create Account</title>
+    <title>Login</title>
 </head>
 <body>
     <section class="vh-100">
         <div class="container-fluid">
-            <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col-5 sidebar vh-100 text-center">
-                    <h1 class="text-light sideinfo">FullCircle</h1>
+            <div class="row d-flex justify-content-center align-items-center vh-100">
+                <div class="col-5 sidebar text-center">
+                    <h1 class="text-light sideinfo mb-0">FullCircle</h1>                     
+                    <p style="margin-bottom:100px;">A Task Management System</p>
+                    <q style="font-style: italic; font-size: 20px;" class="mt-5">Take control of your day, everyday</q>
                 </div>
                 
                 <div class="col bg-light vh-100">
-                    <form action="/choice.html">
+                    <form action="choice.html">
                         <header>Login to your FullCircle Account</header>
                         <span class="ms-2" style="font-size: 12px; font-weight: lighter; color: rgba(115, 115, 115, 1); font-family: 'Roboto';">Enter your credentials below</span>
                         
-                        <div class="form-group col-5 ms-2">
+                        <div class="form-group col-6 ms-2">
                             <label for="UserEmail" class="form-label mb-0">Email</label>
                             <input type="email" class="form-control" id="UserEmail" placeholder="Email" required>
                         </div>
-                        <div class="form-group col-5 ms-2">
+                        <div class="form-group col-6 ms-2">
                             <label for="UserPassword" class="form-label mb-0">Password</label>
                             <input type="password" class="form-control mb-4" id="UserPassword" placeholder="Password" required>
                         </div>

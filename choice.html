@@ -12,41 +12,46 @@
     <!--Bootstrap Optional Javascript-->
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 
-    <title>Create Account</title>
+    <title>FullCircle</title>
 </head>
 <body>
     <section class="vh-100">
         <div class="container-fluid">
             <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col-5 sidebar vh-100 text-center">
-                    <h1 class="text-light sideinfo">FullCircle</h1>
-                </div>
+              <div class="col-5 sidebar vh-100 text-center">
+                <h1 class="text-light sideinfo mb-0">FullCircle</h1>                     
+                <p style="margin-bottom:100px;">A Task Management System</p>
+                <q style="font-style: italic; font-size: 20px;" class="mt-5">Take control of your day, everyday</q>
+            </div>
                 
                 <div class="col bg-light vh-100">
-                    <form action="#" method="POST">
-                        <header>Choose which best describes you:</header>
-                        <div class="d-flex justify-content-between">
-                          <button type="submit" class="card-link stretched-link" name="card-button-1">
-                            <div class="card">
-                              <div class="card-body">
-                                <h5 class="card-title">Card 1 title</h5>
-                                <p class="card-text">Professional</p>
-                              </div>
+                  
+                  <form action="student.html" method="POST">
+                    <h1 class="">Welcome,  <span>Username</span></h1>
+                      <header class="mb-4">Choose which best describes you:</header>
+                      <div class="d-flex justify-content-evenly">
+                        <button type="submit" style="width: 10rem; border: none; background: none;" name="card-button-1" formaction="professional.html">
+                          <div class="card">
+                            <img src="Images/Icons/emoji _briefcase_.png" alt="" class="card-img-top">
+                            <div class="card-body">
+                              <h5 class="card-title mt-2">Professional</h5>
                             </div>
-                          </button>
-                          <button type="submit" class="card-link stretched-link" name="card-button-2">
-                            <div class="card">
-                              <div class="card-body">
-                                <h5 class="card-title">Card 2 title</h5>
-                                <p class="card-text">Student</p>
-                              </div>
+                          </div>
+                        </button>
+                        <button type="submit" style="width: 10rem; border: none; background: none; height: 10rem;" name="card-button-2">
+                          <div class="card">
+                            <img src="Images/Icons/icon _student_.png" alt="" class="card-img-top">
+                            <div class="card-body">
+                              <h5 class="card-title mt-3 pb-1">Student</h5>
                             </div>
-                          </button>
-                        </div>
-                      </form>
-                      
+                          </div>
+                        </button>
+                      </div>
+                    </form>
                     
-                </div>
+                  
+              </div> 
+                
             </div>
         </div>
     </section>

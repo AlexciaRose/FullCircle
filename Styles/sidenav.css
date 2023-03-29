@@ -29,7 +29,7 @@ a{
     align-items: center;
     justify-content: space-between;
     padding: 0 1rem;
-    background-color: var(--white-color);
+    background-color: rgba(240, 240, 240, 1);
     z-index: var(--z-fixed);
     transition: .5s;
 }

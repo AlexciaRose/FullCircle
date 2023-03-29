@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FullCircle</title>
+
+     <!-- Bootstrap CSS -->
+     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+     <link rel="stylesheet" href="./Styles/login.css">
+ 
+     <!--Icons-->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+     <!--Bootstrap Optional Javascript-->
+     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+    
+    <section class="vh-100">
+        <div class="container-fluid"> <!--SideBar-->
+            <div class="row d-flex justify-content-center align-items-center h-100">
+              <div class="col-5 sidebar vh-100 text-center">
+                <h1 class="text-light sideinfo mb-0">FullCircle</h1>                     
+                <p style="margin-bottom:100px;">A Task Management System</p>
+                <q style="font-style: italic; font-size: 20px;" class="mt-5">Take control of your day, everyday</q>
+            </div>
+                
+                <div class="col bg-light vh-100">
+                  
+                    <form class="mt-0"> <!--Back Button-->
+                        <input type="button" class="bck-btn" value="Back" onclick="history.back()">
+                    </form>
+
+                  <form action="#" method="POST">
+                    <div id="class-container">
+                        <h1>What's school like?</h1>
+                        <header class="mb-3">Add Classes</header>
+                        <!-- Form fields for first class -->
+                        <div class="class">
+                            <div class="row d-flex align-items-center">
+                                <div class="form-group col-5 ms-2">
+                                    <label for="ClassName" class="form-label mb-0">Class Name</label>
+                                    <input type="text" id="ClassName" class="form-control" name="class-name[]" placeholder="Class Name" required>
+                                </div>
+                                <div class="form-group col-5 ms-2 mt-4 color-input-wrapper">
+                                    <label for="ClassColor" class="form-label mb-0"></label>
+                                    <input type="color" id="ClassColor" name="class-color[]" list="color-list" value="#4AD650" required>
+                                    <datalist id="color-list">
+                                        <option value="#4AD650">Green</option>
+                                        <option value="#9c4ad6">Violet</option>
+                                        <option value="#d64a53">Red</option>
+                                    </datalist>
+                                </div>
+                            </div>
+                            <div class="row mb-4 mt-2">
+                                <div class="form-group col-5 ms-2">
+                                    <label for="class-instructor" class="form-label mb-0 me-2">Instructor Name</label> <br>
+                                    <input type="text" class="form-control" id="class-instructor"  name="class-instructor[]" placeholder="Instructor Name" required>
+                                </div>
+                            </div>
+
+                            <h3>Weekly Schedule</h3>
+                            <div id="class-times-container">
+                                <div class="row class-times">
+                                <div class="col mt-0">
+                                    <label for="classday" class="form-label mb-0">Day</label>
+                                    <select id="classday" name="class-day[]" class="form-select" type="text">
+                                        <option value="Sunday">Sunday</option>
+                                        <option value="Monday">Monday</option>
+                                        <option value="Tuesday">Tuesday</option>
+                                        <option value="Wednesday">Wednesday</option>
+                                        <option value="Thursday">Thursday</option>
+                                        <option value="Friday">Friday</option>
+                                        <option value="Saturday">Saturday</option>
+                                    </select>
+                              </div>
+                              <div class="col mt-2">
+                                <label for="start-time">Start Time</label>
+                                <input type="time" id="start-time" class="form-control" name="start-time[]" required>
+                              </div>
+                              <div class="col mt-2">
+                                <label for="end-time">End Time</label>
+                                <input type="time" id="end-time" class="form-control" name="end-time[]" required>
+                              </div>
+                                <button class="plus col-2 mt-3" type="button" id="add-class-time"><i class="fa fa-plus" style="font-size:25px;color:rgba(24, 160, 251, 1)"></i></button>
+                                
+                              </div>
+                            </div>
+                            
+                        </div>
+                      </div>
+                      
+                      <button class="mt-5 btn btn-sign" id="add-class">Add Class</button>
+                    </form>
+                    
+
+                  
+              </div> 
+                
+            </div>
+        </div>
+    </section>
+
+<script src="Javascript/forms.js"></script>
+</body>
+</html>

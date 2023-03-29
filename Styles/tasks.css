@@ -1,0 +1,277 @@
+@font-face {
+    font-family: Inter;
+    src: url("../Fonts/Inter-VariableFont_slnt,wght.ttf");
+}
+
+body{
+    background-color: rgba(240, 240, 240, 1);
+}
+
+/*Area to display tasks*/
+.taskbar{
+    height: 200px; 
+    overflow: auto;
+    background-color: white;
+    height: 100%;
+    margin-top: 3%;
+    border-radius: 20px;
+    padding: 30px;
+}
+
+/*Area to display recommendations*/
+.recs{
+    height: 200px; 
+    background-color: white;
+    height: 55%;
+    margin-top: 10%;
+    margin-right: 3%;
+    margin-left: 3%;
+    border-radius: 20px;
+    padding: 30px;
+}
+
+.recs h2{
+    font-family: 'Inter';
+}
+
+.rec p{
+    font-family: 'Inter';
+}
+
+.inner_recs{
+    background-color: none;
+    align-items: center;
+    overflow: auto;
+    min-height: 320px;
+    box-shadow: inset 0px 3px rgba(68, 67, 67, 0.626);
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.timer{
+    background-color: white;
+    margin-top: 5%;
+    margin-right: 3%;
+    margin-left: 3%;
+    border-radius: 20px;
+    padding: 20px;
+    font-family: 'Inter';
+}
+
+h1{
+    color: #4723D9;
+    font-family: 'Inter';
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.btn-group{
+    width: auto;
+    height: fit-content;
+}
+
+.btn{
+    background-color: #4723D9;
+}
+
+.btn-group a{
+    color: white;
+    margin-top: 10px;
+}
+
+.dropdown-menu {
+    max-width: 60px;
+    background-color: rgb(204, 183, 245);
+  }
+
+.dropdown-toggle{
+    max-width: 60px;
+}
+
+.dropdown-item{
+    max-width: 80px;
+}
+
+.btn-group ul{
+    max-width: 60px;
+}
+
+.btn-class{
+    color: white;
+    background-color: rgba(249, 249, 249, 1);
+}
+
+.drop-class{
+    background-color: rgba(249, 249, 249, 1);
+    border: none;
+}
+
+
+
+.order::after{
+    display: inline-block;
+    font-family: "Font Awesome 5 Free"; 
+    font-weight: 900; 
+    content: "\f0dc";
+    margin-left: 5px;
+  }
+
+.task{
+    border-color: #4723D9;
+    border-left: 5px #4723D9;
+    border-style: solid;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 2px 2px rgba(97, 96, 96, 0.706);
+    min-height: 150px;
+    margin: 10px;
+}
+
+.fa-circle-check {
+    margin-right: -20px;
+}
+
+h4{
+    font-family: 'Inter';
+    font-size: 24px;
+    font-weight: bolder;
+    color: black;
+}
+
+.fa-ellipsis-vertical{
+    align-self: auto;
+}
+
+.task p{
+    color: gray;
+    font-style: italic;
+}
+
+progress {
+    height: 8px;
+    border-radius: 5px;
+  }
+  
+  progress::-webkit-progress-bar {
+    background-color: #e6e6e6;
+    border-radius: 5px;
+  }
+  
+  progress::-webkit-progress-value {
+    background-color: #4723D9;
+    border-radius: 5px;
+  }
+
+  .task span{
+    font-size: 15px;
+    color: gray;
+    font-weight: bolder;
+  }
+  
+.className{
+    background-color: #4723d99d;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+.dueDate{
+    border: 2px solid rgba(80, 79, 79, 0.709);
+    color: rgb(91, 91, 91);
+    padding: 5px;
+    border-radius:5px;
+    font-size: 15px;
+}
+
+.status{
+    background-color: rgba(48, 169, 82, 1);
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+@media (max-width:1000px){
+    .status{
+        font-size: 10px;
+        display: none;
+        
+    }
+    .dueDate{
+        font-size: 10px;
+        display: none;
+    }
+    .className{
+        font-size: 10px;
+        display: none;
+    }
+    .task span{
+        font-size: 10px;
+      }
+    .task {
+        font-size: 10px;
+    }
+    h4{
+        font-size: 20px;
+    }
+    .task{
+        min-height: 100px;
+    }
+}
+
+/* Timeline CSS */
+
+.card-body{
+    background-color: white;
+    width: 100%;
+    border-bottom: 1px solid #929292;
+}
+
+.card-title{
+    font-family: 'Inter';
+}
+
+/*Timer CSS*/
+
+.wrapper{
+    user-select: none;
+  }
+  .wrapper .time{
+    height: 60px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -8px;
+  }
+
+  .wrapper .time span{
+    text-align: center;
+    font-size: 35px;
+    font-weight: 500;
+    color: rgba(24, 160, 251, 0.5);
+  }
+
+  .wrapper .buttons{
+    text-align: center;
+    margin-top: 0px;
+  }
+  .buttons button{
+    padding: 6px 16px;
+    outline: none;
+    border: none;
+    margin: 0 5px;
+    color: #7D2Ae8;
+    background: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 10px 10px 20px rgba(0,0,0,0.09);
+  }
+  .buttons button.active,
+  .buttons button.stopActive{
+    pointer-events: none;
+    opacity: 0.7;
+  }

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FullCircle</title>
+
+     <!-- Bootstrap CSS -->
+     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+     <link rel="stylesheet" href="./Styles/login.css">
+ 
+     <!--Bootstrap Optional Javascript-->
+     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+    
+    <section class="vh-100">
+        <div class="container-fluid">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+              <div class="col-5 sidebar vh-100 text-center">
+                <h1 class="text-light sideinfo mb-0">FullCircle</h1>                     
+                <p style="margin-bottom:100px;">A Task Management System</p>
+                <q style="font-style: italic; font-size: 20px;" class="mt-5">Take control of your day, everyday</q>
+            </div>
+                
+                <div class="col bg-light vh-100">
+                  
+                    <form class="mt-0">
+                        <input type="button" class="bck-btn" value="Back" onclick="history.back()">
+                    </form>
+
+                  <form action="classes.html" method="POST">
+                    <h1>What's school like?</h1>
+                      <header class="mb-3">Provide some more details for a better user experience:</header>
+                        <div class="row">
+                            <div class="form-group col-5 ms-2">
+                                <label for="UserSchool" class="form-label mb-0">University Name</label>
+                                <input type="text" class="form-control" id="UserSchool" placeholder="University Name" required>
+                            </div>
+                            <div class="form-group col-5 ms-2">
+                                <label for="Program" class="form-label mb-0">Program of Study</label>
+                                <input type="text" class="form-control mb-2" id="Program" placeholder="Program of Study" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-5 ms-2">
+                                <label for="Duration" class="form-label mb-0">Duration of Study</label>
+                                <input type="text" class="form-control" id="Duration" placeholder="Duration of Study" required>
+                            </div>
+                            <div class="form-group col-5 ms-2">
+                                <label for="Year" class="form-label mb-0">Current Year</label>
+                                <input type="text" class="form-control mb-2" id="Year" placeholder="Current Year" required>
+                            </div>                       
+                      </div>
+
+                      <div class="row">
+                        <div class="col-lg-8 col-md-7 ms-2">
+                            <label for="semester" class="form-label mb-0">Current Semester</label>
+                            <select id="semester" class="form-select" aria-label="Default select example">
+                                <option value="Semester One" >Semester One</option>
+                                <option value="Semester Two">Semester Two</option>
+                                <option value="Semester Three">Semester Three</option>
+                            </select>
+                      </div>
+                    </div>
+
+                    <div class="row mb-4 mt-2">
+                        <div class="form-group col ms-2">
+                            <label for="start" class="form-label mb-0">Start Date</label> <br>
+                            <input type="date" class="form-date" id="start"  min="2023-01-01" max="2024-12-31">
+                        </div>
+                        <div class="form-group col ms-2">
+                            <label for="end" class="form-label mb-0 me-2">End Date</label> <br>
+                            <input type="date" class="form-date" id="end"  min="2023-01-01" max="2024-12-31">
+                        </div>
+                    </div>
+
+                        <div class="form-group ms-2">
+                            <input type="submit" class="btn btn-sign mb-2" value="NEXT">
+                        </div>
+                    </form>
+                    
+                  
+              </div> 
+                
+            </div>
+        </div>
+    </section>
+
+
+</body>
+</html>

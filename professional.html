@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+     <!-- Bootstrap CSS -->
+     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+     <link rel="stylesheet" href="./Styles/login.css">
+ 
+     <!--Bootstrap Optional Javascript-->
+     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+     
+    <title>FullCircle</title>
+</head>
+<body>
+    <section class="vh-100">
+        <div class="container-fluid">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+              <div class="col-5 sidebar vh-100 text-center">
+                <h1 class="text-light sideinfo mb-0">FullCircle</h1>                     
+                <p style="margin-bottom:100px;">A Task Management System</p>
+                <q style="font-style: italic; font-size: 20px;" class="mt-5">Take control of your day, everyday</q>
+            </div>
+                
+                <div class="col bg-light vh-100">
+                  
+                    <form class="mt-0">
+                        <input type="button" class="bck-btn" value="Back" onclick="history.back()">
+                    </form>
+
+                  <form action="#" method="POST">
+                    <h1>What's the job like?</h1>
+                      <header class="mb-4">Provide some more details for a better user experience:</header>
+                        <div class="form-group col-6 ms-2">
+                            <label for="UserJob" class="form-label mb-0">Job Title</label>
+                            <input type="text" class="form-control" id="UserJob" placeholder="Job Title" required>
+                        </div>
+                        <div class="form-group col-6 ms-2">
+                            <label for="WorkDay" class="form-label mb-0">Day</label>
+                            <input type="text" class="form-control mb-4" id="WorkDay" placeholder="Monday" required>
+                        </div>
+                        <div class="form-group ms-2">
+                            <input type="submit" class="btn btn-sign mb-2" value="DONE">
+                        </div>
+                    </form>
+                    
+                  
+              </div> 
+                
+            </div>
+        </div>
+    </section>
+</body>
+</html>
