@@ -1,0 +1,15 @@
+@font-face {
+  font-family: Inter;
+  src: url("../Fonts/Inter-VariableFont_slnt,wght.ttf");
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url("../Fonts/Roboto-Regular.ttf");
+}
+
+.nav_logo-name {
+  font-family: "Inter";
+  font-weight: bold;
+  font-size: 50px;
+}
