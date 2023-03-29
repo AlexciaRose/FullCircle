@@ -8,12 +8,12 @@
      <!-- Bootstrap CSS -->
      <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
      <link rel="stylesheet" href="./Styles/sidenav.css">
+     <link rel="stylesheet" href="./Styles/tasks.css">
  
     <!--Icons-->
     <script src="https://kit.fontawesome.com/6b35027422.js" crossorigin="anonymous"></script>
      
-     <!--Bootstrap Optional Javascript-->
-     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    
 
     <title>Tasks</title>
 </head>
@@ -38,11 +38,148 @@
     </div>
 
     <!--Container Main start-->
-    <div class="vh-100">
-        <h4>Main Components</h4>
+    <div class="vh-100 row">
+        <div class="taskbar col-8">
+            <div class="row d-flex align-items-center">
+                <h1 class="col-9">Tasks</h1>
+                <div class="btn-group col-3">
+                    <button class="btn btn-secondary btn-sm" type="button">
+                        <a href="#"> <i class="fa-solid fa-plus" style="color: #ffffff; padding-right: 2px;"></i> <span>Add Task </span> </a> 
+                        
+                    </button>
+                    <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                      <span class="visually-hidden">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                    </ul>
+                  </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="btn-group col-2">
+                    <button class="btn btn-class btn-sm" style="color: black;" type="button">
+                        Show: <span style="color: rgba(131, 134, 133, 1);">Biology</span> </a> 
+                    </button>
+                    <button type="button" class="btn btn-sm btn-info dropdown-toggle drop-class dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                      <span class="visually-hidden">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu ">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                    </ul>
+                </div>
+                <div class="btn-group col-2">
+                    <button type="button" class="btn btn-sm btn-info drop-class order dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class="visually-hidden">Toggle Dropdown</span>
+                      </button>                      
+                      <ul class="dropdown-menu ">
+                          <li><a class="dropdown-item" href="#">Action</a></li>
+                          <li><a class="dropdown-item" href="#">Action</a></li>
+                      </ul>
+                    <button class="btn btn-class btn-sm" style="color: black;" type="button">
+                       <span style="color: rgba(131, 134, 133, 1);">Due Date</span> </a> 
+                    </button>
+                    <button type="button" class="btn btn-sm btn-info dropdown-toggle drop-class dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                      <span class="visually-hidden">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu ">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-5">
+                <div class="task">
+                    <div class="flex-row d-flex align-items-center">
+                        <i class="fa-regular fa-circle-check fa-xl p-2" style="color: #ccd0d7;"></i>
+                        <h4 class="ms-5">Biology Essay</h4>
+                        <i class="fa-solid fa-ellipsis-vertical fa-lg ms-auto p-2" style="color: #676767;"></i>
+                    </div>
+                    <div>
+                        <p class="ms-5 me-4 mt-lg-2 mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, accusamus sequatur dolorem dolorum voluptatum laboriosam...</p>
+                    </div>
+                    <div class="flex-row d-flex align-items-center">
+                        
+                        <i class="fa-solid fa-pen-to-square fa-xl p-2" style="color: #ccd0d7;"></i>
+                        <progress class="ms-4 me-4" value="25" max="100"></progress> <span class="me-5 pe-5">25% complete</span>
+                        
+                            <ul class="list-inline ms-5 align-self-center">
+                                <li class="list-inline-item className" id="className">Principles of Biology</li>
+                                <li class="list-inline-item dueDate" id="dueDate"> <i class="fa-solid fa-calendar me-2" style="color: #a3a3a3;"></i> Friday</li>
+                                <li class="list-inline-item status" id="status">On Time</li>
+                              </ul>
+
+                        
+                    </div>
+                     
+                </div>
+
+            </div>
+            
+        </div>
+        <div class="col d-flex flex-column">
+            
+            <div class="recs">
+                <p>Here are some suggestions for </p>
+                <h2 style="font-weight: bold;">Today, <span style="color: rgba(24, 160, 251, 0.5);">March 28</span></h2>
+                <div class="inner_recs card">
+                  
+                        <div class="card-body">
+                            <div class="flex-row d-flex align-items-center justify-content-between">
+                                <h5 class="card-title">Biology Work</h5>
+                                <i class="fa-solid fa-circle-play fa-lg" style="color: #4723D9;"></i>
+                            </div>
+                          <h6 class="card-subtitle mb-2 text-body-secondary">2pm - 3pm</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="flex-row d-flex align-items-center justify-content-between">
+                                <h5 class="card-title">Biology Work</h5>
+                                <i class="fa-solid fa-circle-play fa-lg" style="color: #4723D9;"></i>
+                            </div>
+                          <h6 class="card-subtitle mb-2 text-body-secondary">2pm - 3pm</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="flex-row d-flex align-items-center justify-content-between">
+                                <h5 class="card-title">Biology Work</h5>
+                                <i class="fa-solid fa-circle-play fa-lg" style="color: #4723D9;"></i>
+                            </div>
+                          <h6 class="card-subtitle mb-2 text-body-secondary">2pm - 3pm</h6>
+                        </div>
+                      
+                </div>
+            </div>
+            <div class="timer">
+                <h4>Time Tracker</h4>
+                <p>You can start tracking...</p>
+                <div class="wrapper">
+                    <div class="time">
+                      <span class="hour">00</span>
+                      <span class="colon">:</span>
+                      <span class="minute">00</span>
+                      <span class="colon">:</span>
+                      <span class="second">00</span>
+                      <span class="colon ms-colon" style="display: none;">:</span>
+                      <span class="millisecond" style="display: none;">00</span>
+                    </div>
+                    <div class="buttons">
+                      <button class="start">Start</button>
+                      <button class="stop">Stop</button>
+                      <button class="reset">Reset</button>
+                    </div>
+                  </div>
+            </div>
+        </div>
     </div>
     <!--Container Main end-->
 
+
+     <!--Bootstrap Optional Javascript-->
+     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.min.js" integrity="sha384-heAjqF+bCxXpCWLa6Zhcp4fu20XoNIA98ecBC1YkdXhszjoejr5y9Q77hIrv8R9i" crossorigin="anonymous"></script>
+    <script src="Javascript/sidenav.js"></script>
     <script src="Javascript/tasks.js"></script>
 
 </body>
