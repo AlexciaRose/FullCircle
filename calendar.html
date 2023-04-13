@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8' />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./Styles/sidenav.css">
+  
+
+   <!--Icons-->
+   <script src="https://kit.fontawesome.com/6b35027422.js" crossorigin="anonymous"></script>
+    
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.5/index.global.min.js'></script>
+    <script>
+
+      document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          initialView: 'dayGridMonth'
+        });
+        calendar.render();
+      });
+
+    </script>
+  </head>
+  <body id="bodyId">
+    <header class="header" id="headerId">
+    <div class="header_toggle"> <i class="fa-solid fa-angle-right" style="color: #4723D9;" id="toggleId"></i> </div>
+    <div class="header_img"> <img src="" alt=""> </div>
+</header>
+<div class="l-navbar" id="navId">
+    <nav class="nav">
+        <div> <a href="#" class="nav_logo"> <i class="fa-solid fa-circle-notch fa-rotate-90 fa-lg" style="color: #fcfcfc;"></i> <span class="nav_logo-name">FullCircle</span> </a>
+            <div class="nav_list"> 
+                <a href="#" class="nav_link active"> <i class="fa-solid fa-boxes-stacked" style="color: #e6e6e6;"></i> <span class="nav_name">Dashboard</span> </a> 
+                <a href="tasks.html" class="nav_link"> <i class="fa-solid fa-folder" style="color: #e6e6e6;"></i> <span class="nav_name">Tasks</span> </a> 
+                <a href="calendar.html" class="nav_link"> <i class="fa-solid fa-calendar" style="color: #e6e6e6;"></i> <span class="nav_name">Schedule</span> </a> 
+                <a href="#" class="nav_link"> <i class="fa-solid fa-user" style="color: #e6e6e6;"></i> <span class="nav_name">Profile</span> </a> 
+              
+            </div>
+        </div> <a href="#" class="nav_link"> <i class="fa-solid fa-right-from-bracket" style="color: #e8e8e8;"></i> <span class="nav_name">Logout</span> </a>
+    </nav>
+</div>
+
+    <div id='calendar'></div>
+
+    <script src="Javascript/sidenav.js"></script>
+  </body>
+</html>

@@ -10,44 +10,49 @@
      <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
      <link rel="stylesheet" href="./Styles/login.css">
  
-     <!--Icons-->
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--Icons-->
+    <script src="https://kit.fontawesome.com/6b35027422.js" crossorigin="anonymous"></script>
 
-     <!--Bootstrap Optional Javascript-->
-     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    
 
 </head>
-<body>
+<body style="height: 100%;">
     
-    <section class="vh-100">
-        <div class="container-fluid"> <!--SideBar-->
-            <div class="row d-flex justify-content-center align-items-center h-100">
-              <div class="col-5 sidebar vh-100 text-center">
+    <section style="height: 100vh; background-color: rgba(24, 160, 251, 1); overflow-y: scroll; display: flex; flex-direction: column; ">
+        <div class="container-fluid d-flex" style=" flex-grow: 1;"> 
+            <!--SideBar-->
+            <div class="row d-flex justify-content-center align-items-center" style="height: 100%;" >
+              <div class="col-5 sidebar text-center">
                 <h1 class="text-light sideinfo mb-0">FullCircle</h1>                     
                 <p style="margin-bottom:100px;">A Task Management System</p>
                 <q style="font-style: italic; font-size: 20px;" class="mt-5">Take control of your day, everyday</q>
             </div>
                 
-                <div class="col bg-light vh-100">
+                <div class="col-7 bg-light mb-3" style="height: 100%;" id="class-container">
                   
                     <form class="mt-0"> <!--Back Button-->
                         <input type="button" class="bck-btn" value="Back" onclick="history.back()">
                     </form>
 
-                  <form action="#" method="POST">
-                    <div id="class-container">
+                  <form action="view.html" id="class-form"  class="class">
+                    <div >
                         <h1>What's school like?</h1>
                         <header class="mb-3">Add Classes</header>
                         <!-- Form fields for first class -->
-                        <div class="class">
+                        <div>
+                            <div class="row mb-4 mt-2">
+                                <div class="form-group col-5 ms-2">
+                                    <label for="class-code" class="form-label mb-0 me-2">Class Code</label> <br>
+                                    <input type="text" class="form-control" id="class-code"  name="class-code[]" placeholder="Class Code" autofocus>
+                                </div>
                             <div class="row d-flex align-items-center">
                                 <div class="form-group col-5 ms-2">
                                     <label for="ClassName" class="form-label mb-0">Class Name</label>
-                                    <input type="text" id="ClassName" class="form-control" name="class-name[]" placeholder="Class Name" required>
+                                    <input type="text" id="ClassName" class="form-control" name="class-name[]" placeholder="Class Name" autofocus>
                                 </div>
                                 <div class="form-group col-5 ms-2 mt-4 color-input-wrapper">
                                     <label for="ClassColor" class="form-label mb-0"></label>
-                                    <input type="color" id="ClassColor" name="class-color[]" list="color-list" value="#4AD650" required>
+                                    <input type="color" id="ClassColor" name="class-color[]" list="color-list" value="#4AD650">
                                     <datalist id="color-list">
                                         <option value="#4AD650">Green</option>
                                         <option value="#9c4ad6">Violet</option>
@@ -58,13 +63,13 @@
                             <div class="row mb-4 mt-2">
                                 <div class="form-group col-5 ms-2">
                                     <label for="class-instructor" class="form-label mb-0 me-2">Instructor Name</label> <br>
-                                    <input type="text" class="form-control" id="class-instructor"  name="class-instructor[]" placeholder="Instructor Name" required>
+                                    <input type="text" class="form-control" id="class-instructor"  name="class-instructor[]" placeholder="Instructor Name" autofocus>
                                 </div>
                             </div>
 
                             <h3>Weekly Schedule</h3>
                             <div id="class-times-container">
-                                <div class="row class-times">
+                                <div class="row" id="class-times">
                                 <div class="col mt-0">
                                     <label for="classday" class="form-label mb-0">Day</label>
                                     <select id="classday" name="class-day[]" class="form-select" type="text">
@@ -79,11 +84,11 @@
                               </div>
                               <div class="col mt-2">
                                 <label for="start-time">Start Time</label>
-                                <input type="time" id="start-time" class="form-control" name="start-time[]" required>
+                                <input type="time" id="start-time" class="form-control" name="start-time[]">
                               </div>
                               <div class="col mt-2">
                                 <label for="end-time">End Time</label>
-                                <input type="time" id="end-time" class="form-control" name="end-time[]" required>
+                                <input type="time" id="end-time" class="form-control" name="end-time[]">
                               </div>
                                 <button class="plus col-2 mt-3" type="button" id="add-class-time"><i class="fa fa-plus" style="font-size:25px;color:rgba(24, 160, 251, 1)"></i></button>
                                 
@@ -93,17 +98,23 @@
                         </div>
                       </div>
                       
-                      <button class="mt-5 btn btn-sign" id="add-class">Add Class</button>
+                      <button class="mt-5 btn btn-sign btn-sm" type="submit" id="save-classes">
+                       <span>Save</span>
+                     </button> 
+                
+                     
                     </form>
-                    
-
-                  
+                 
               </div> 
                 
             </div>
         </div>
-    </section>
 
-<script src="Javascript/forms.js"></script>
+    </section>
+    
+      <!--Bootstrap Optional Javascript-->
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.min.js" integrity="sha384-heAjqF+bCxXpCWLa6Zhcp4fu20XoNIA98ecBC1YkdXhszjoejr5y9Q77hIrv8R9i" crossorigin="anonymous"></script>
+      <script src="Javascript/forms.js"></script>
 </body>
 </html>

@@ -1,3 +1,7 @@
+
+console.log('JavaScript file is being loaded');
+
+const { ipcRenderer } = require('electron');
 /*
 // Submit the form and save the data to localStorage
 function saveFormData(formId, inputFields){
@@ -14,11 +18,9 @@ function saveFormData(formId, inputFields){
       });
 
     const dataString = JSON.stringify(dataObject);
-    // Saves the JSON string to localStorage
-    localStorage.setItem(`${formId}-data`, dataString);
+    // Saves the JSON string
+    store.setItem(`${formId}-data`, dataString);
 }
-
-
 
 
 const form = document.getElementById('create-account');
@@ -26,25 +28,150 @@ const form = document.getElementById('create-account');
 form.addEventListener('submit', function(event) {
   event.preventDefault();
   saveFormData('create-account', ['FirstName', 'LastName', 'UserEmail', 'UserPassword']);
+  window.location.href = "student.html";
 });
 
 
 // Retrieve data from localStorage
-const createformData = JSON.parse(localStorage.getItem('create-account-data'));
+const createformData = JSON.parse(store.getItem('create-account-data'));
 
-if (createformData) {
+if (createformData && createformData.FirstName) {
   // Get the first name from the data
   const firstName = createformData.FirstName;
 
   // Update the welcome message
   const welcomeMessage = document.getElementById('welcome-message');
   welcomeMessage.textContent = `Welcome, ${firstName}!`;
-} */
+} 
+
+/*
+// Collect data from student form
+const studentForm = document.getElementById('student-form');
+
+// Attach event listener to form submit event
+studentForm.addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  saveFormData('student-form', ['UserSchool', 'Program', 'duration', 'current-year', 'semester', 'start', 'end']);
+
+});
+*/
+
+
+// Send new account data to backend
+const createform = document.getElementById('create-account');
+
+createform.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const formData = new FormData(createform);
+
+  // Build the data object from the form data
+  const data = {};
+  formData.forEach((value, key) => {
+    data[key] = value;
+  });
+
+  // Set the headers for the request
+  const headers = new Headers();
+  headers.append('Content-Type', 'application/json');
+
+  // Send the data to the server
+  fetch('https://rest-api-flask-python-fullcircle.onrender.com/register', {
+    method: 'POST',
+    headers: headers,
+    body: JSON.stringify(data)
+  })
+  .then((response) => {
+    if (response.ok) {
+      console.log('Form data submitted successfully');
+       // Trigger the form-submitted event to open the student window
+       ipcRenderer.send('form-submitted', data, 'student.html');
+    } else {
+      throw new Error('Failed to submit form');
+    }
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+});
 
 
 
+// Sends login data to backend
+const loginForm = document.getElementById('login-form');
+
+loginForm.addEventListener('submit', (e) => {
+  console.log('Rdirecting');
+  e.preventDefault();
+
+  const loginData = new FormData(loginForm);
+
+  // Build the data object from the form data
+  const data = {};
+  loginData.forEach((value, key) => {
+    data[key] = value;
+  });
+
+  // Set the headers for the request
+  const headers = new Headers();
+  headers.append('Content-Type', 'application/json');
+
+  // Send the data to the server
+  fetch('https://rest-api-flask-python-fullcircle.onrender.com/login', {
+    method: 'POST',
+    headers: headers,
+    body: JSON.stringify(data)
+  })
+  .then((response) => {
+    if (response.ok) {
+      console.log('Login successful');
+      ipcRenderer.send('form-submitted', data, 'profile.html');
+    } else {
+      throw new Error('Failed to log in');
+    }
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+});
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  console.log('Content is loading');
+  // Get references to the form-selects
+  const durationSelect = document.getElementById('duration');
+  const yearSelect = document.getElementById('current-year');
+
+  // Set up an event listener for changes to the durationSelect
+  durationSelect.addEventListener('change', () => {
+    // Get the selected value from the durationSelect
+    const selectedDuration = durationSelect.value;
+
+    // Clear the options in the yearSelect
+    yearSelect.innerHTML = '';
+
+    // Create an array of options for the yearSelect based on the selectedDuration
+    const options = [];
+    for (let i = 1; i <= selectedDuration; i++) {
+      options.push(`<option value="${i}">${i}</option>`);
+    }
+
+    // Add the options to the yearSelect
+    yearSelect.innerHTML = options.join('');
+  });
+});
+
+
+
+// adds area for new class time
 const addClassTimeButton = document.getElementById('add-class-time');
-const classTimeContainer = document.querySelector('.class-times');
+const classTimeContainer = document.getElementById('class-times');
+console.log(classTimeContainer);
+
 // Attaches an event listener to the plus sign
 addClassTimeButton.addEventListener('click', () => {
   const newClassTime = document.createElement('div'); // New form genrated to input class time
@@ -70,33 +197,120 @@ addClassTimeButton.addEventListener('click', () => {
            <label for="end-time">End Time</label>
            <input type="time" id="end-time" class="form-control" name="end-time[]" required>
         </div>
-       <button class="plus col-2 mt-3 remove-class-time" type="button"><i class="fa fa-minus" style="font-size:25px;color:rgb(251, 24, 24)"></i></button>
+       <button class="plus col-2 mt-3" id="remove-class-time-${classTimeContainer.children.length}" type="button"><i class="fa fa-minus" style="font-size:25px;color:rgb(251, 24, 24)"></i></button>
   </div>
   `;
+
+  const removeClassTimeButton = newClassTime.querySelector(`#remove-class-time-${classTimeContainer.children.length}`);
+  removeClassTimeButton.addEventListener('click', (event) => {
+    event.target.parentNode.parentNode.remove();
+  });
+
   classTimeContainer.appendChild(newClassTime);
 });
 
-const removeClassTimeButton = document.getElementById('remove-class-time');
-
-removeClassTimeButton.addEventListener('click', (event) => {
-    event.target.parentNode.parentNode.remove();
-  
-});
-
+/*
 // Creates new area to add another class
 const addClassButton = document.getElementById('add-class');
 const classContainer = document.getElementById('class-container');
 const classTemplate = document.querySelector('.class');
 
 addClassButton.addEventListener('click', function() {
-  // Check if all the required fields have values
-  const allFields = Array.from(classTemplate.querySelectorAll('input, select'));
-  const hasValue = allFields.every(field => field.value !== '');
-  
-  if (hasValue) {
     const newClass = classTemplate.cloneNode(true);
     classContainer.appendChild(newClass);
-  } else {
-    alert('Please fill out all fields before adding a new class.');
+ 
+}); */
+
+// Select the form element
+const classform = document.querySelector('#class-form');
+
+// Create an empty array to store the class data objects
+const classes = [];
+
+function createClassData() {
+
+  // Create a new FormData object and populate it with the form data
+  const classformData = new FormData(classform);
+
+  // Iterate over the length of the class-code[] values in the FormData object
+  for (let i = 0; i < classformData.getAll('class-code[]').length; i++) {
+    const classData = {
+      code: classformData.getAll('class-code[]')[i],
+      name: classformData.getAll('class-name[]')[i],
+      color: classformData.getAll('class-color[]')[i],
+      instructor: classformData.getAll('class-instructor[]')[i],
+      times: [],
+    };
+
+     // Iterate over the length of the class-day[] values in the FormData object
+    for (let j = 0; j < classformData.getAll('class-day[]').length; j++) {
+      if (i === Math.floor(j / 2)) {
+        classData.times.push({
+          day: classformData.getAll('class-day[]')[j],
+          startTime: classformData.getAll('start-time[]')[j],
+          endTime: classformData.getAll('end-time[]')[j],
+        });
+      }
+    }
+    classes.push(classData);
+
+    console.log(classes);
   }
+}
+
+
+
+
+classform.addEventListener('submit', function(event) {
+  console.log('Form submitted!');
+  createClassData();
+  
 });
+
+
+
+
+
+function addViewContent() {
+  if (window.location.href.indexOf("view.html") > -1) {
+    const viewcontainer = document.querySelector('.classes-container');
+    const viewClass = document.createElement('div');
+    viewClass.innerHTML = `
+      <div">
+        <p>No recorded classes...</p>
+      </div>
+    `;
+    viewcontainer.appendChild(viewClass);
+  }
+}
+
+
+
+/*// Your code for the view.html page goes here
+    const viewcontainer = document.querySelector('.classes-container'); // Replace with your container element
+    viewcontainer.innerHTML = '<p>Hi</p>'; // Clear the existing content
+    // ...
+for (let i = 0; i < classes.length; i++) {
+  const classData = classes[i];
+  const classCard = `
+    <div class="card" style="width: 18rem; background-color: ${classData.color};">
+      <div class="card-body">
+        <h5 class="card-title">${classData.code}</h5>
+        <h6 class="card-subtitle mb-2 text-body-secondary">${classData.name}</h6>
+        <p class="card-text">${getClassTimes(classData)}</p>
+      </div>
+    </div>
+  `;
+  container.innerHTML += classCard;
+}
+
+function getClassTimes(classData) {
+  let timesString = '';
+  for (let j = 0; j < classData.times.length; j++) {
+    const classTime = classData.times[j];
+    timesString += `${classTime.day}: ${classTime.startTime} - ${classTime.endTime}<br>`;
+  }
+  return timesString;
+}
+*/
+

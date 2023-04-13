@@ -20,18 +20,17 @@
 }
 
 .sidebar{
-    background: linear-gradient(rgba(24, 160, 251, 1),rgba(123, 97, 255, 0.82) );
     display: flex;
     justify-content: center;
     flex-direction: column;
     text-align: center;
     color: white;
-    height: 100%;
-    background-size: cover;
+    background-size: 100%;
+    height: auto;
 }
     
 form{
-    margin-top: 15%;
+    margin-top: 10%;
     margin-left: 5%;
 }
 form header{
@@ -44,6 +43,13 @@ form header{
     form header{
         font-size: 20px;
     }
+}
+
+.view{
+    font-size: 14px;
+    font-family: 'Inter';
+    margin-top: 16px;
+    font-weight: 300;
 }
 
 .form-label{
@@ -143,3 +149,21 @@ form h1 span{
       margin: 0;
       padding: 0;
     }
+
+    .modal-dialog {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+      }
+
+      .modal-body{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        min-height: 15vh;
+      }
+
+      .modal-content{
+        width: 30vw;
+      }

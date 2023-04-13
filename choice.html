@@ -1,3 +1,7 @@
+<!--
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,11 +9,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Bootstrap CSS -->
+    <!-- Bootstrap CSS
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./Styles/login.css">
 
-    <!--Bootstrap Optional Javascript-->
+    <!--Bootstrap Optional Javascript
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 
     <title>FullCircle</title>
@@ -26,11 +30,11 @@
                 
                 <div class="col bg-light vh-100">
                   
-                  <form action="student.html" method="POST">
-                    <h1 class="">Welcome,  <span>Username</span></h1>
+                  <form action="student.html" method="POST" id="choice-form">
+                    <h1 id="welcome-message"></h1>
                       <header class="mb-4">Choose which best describes you:</header>
                       <div class="d-flex justify-content-evenly">
-                        <button type="submit" style="width: 10rem; border: none; background: none;" name="card-button-1" formaction="professional.html">
+                        <button type="submit" style="width: 10rem; border: none; background: none;" name="professional-button" formaction="professional.html">
                           <div class="card">
                             <img src="Images/Icons/emoji _briefcase_.png" alt="" class="card-img-top">
                             <div class="card-body">
@@ -38,7 +42,7 @@
                             </div>
                           </div>
                         </button>
-                        <button type="submit" style="width: 10rem; border: none; background: none; height: 10rem;" name="card-button-2">
+                        <button type="submit" style="width: 10rem; border: none; background: none; height: 10rem;" name="student-button">
                           <div class="card">
                             <img src="Images/Icons/icon _student_.png" alt="" class="card-img-top">
                             <div class="card-body">
@@ -47,6 +51,9 @@
                           </div>
                         </button>
                       </div>
+                      <div class="form-group ms-2">
+                        <input type="submit" class="btn btn-sign mb-2" value="Next">                    
+                </div>
                     </form>
                     
                   
@@ -55,6 +62,8 @@
             </div>
         </div>
     </section>
-
+<script src="Javascript/forms.js"></script>
 </body>
 </html>
+
+-->

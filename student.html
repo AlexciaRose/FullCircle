@@ -16,7 +16,7 @@
 </head>
 <body>
     
-    <section class="vh-100">
+    <section class="vh-100" style="background-color: #18a0fb; overflow-y: scroll; display: flex; flex-direction: column;">
         <div class="container-fluid">
             <div class="row d-flex justify-content-center align-items-center h-100">
               <div class="col-5 sidebar vh-100 text-center">
@@ -31,8 +31,8 @@
                         <input type="button" class="bck-btn" value="Back" onclick="history.back()">
                     </form>
 
-                  <form action="classes.html" method="POST">
-                    <h1>What's school like?</h1>
+                  <form action="classes.html" method="POST" id="student-form">
+                    <h1 id="welcome-message">What's school like?</h1>
                       <header class="mb-3">Provide some more details for a better user experience:</header>
                         <div class="row">
                             <div class="form-group col-5 ms-2">
@@ -46,12 +46,20 @@
                         </div>
                         <div class="row">
                             <div class="form-group col-5 ms-2">
-                                <label for="Duration" class="form-label mb-0">Duration of Study</label>
-                                <input type="text" class="form-control" id="Duration" placeholder="Duration of Study" required>
+                                <label for="duration" class="form-label mb-0">Duration of Study</label>
+                                <select id="duration" class="form-select" aria-label="Default select example">
+                                    <option value="1">One Year</option>
+                                    <option value="2">Two Years</option>
+                                    <option value="3">Three Years</option>
+                                    <option value="4">Four Years</option>
+                                    <option value="5">Five Years</option>
+                                </select>
                             </div>
                             <div class="form-group col-5 ms-2">
                                 <label for="Year" class="form-label mb-0">Current Year</label>
-                                <input type="text" class="form-control mb-2" id="Year" placeholder="Current Year" required>
+                                <select id="current-year" class="form-select" aria-label="Default select example">
+                                    <option value="1">1</option>
+                                </select>
                             </div>                       
                       </div>
 
@@ -68,12 +76,12 @@
 
                     <div class="row mb-4 mt-2">
                         <div class="form-group col ms-2">
-                            <label for="start" class="form-label mb-0">Start Date</label> <br>
-                            <input type="date" class="form-date" id="start"  min="2023-01-01" max="2024-12-31">
+                            <label for="start" class="form-label mb-0">Sem. Start Date</label> <br>
+                            <input type="date" class="form-date" id="start"  min="2023-01-01" max="2023-12-31">
                         </div>
                         <div class="form-group col ms-2">
-                            <label for="end" class="form-label mb-0 me-2">End Date</label> <br>
-                            <input type="date" class="form-date" id="end"  min="2023-01-01" max="2024-12-31">
+                            <label for="end" class="form-label mb-0 me-2">Sem. End Date</label> <br>
+                            <input type="date" class="form-date" id="end"  min="2023-02-01" max="2023-12-31">
                         </div>
                     </div>
 
@@ -89,6 +97,7 @@
         </div>
     </section>
 
+<script src="Javascript/forms.js"></script>
 
 </body>
 </html>
