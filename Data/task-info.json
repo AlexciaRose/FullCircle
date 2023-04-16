@@ -1,0 +1,23 @@
+{"tasks": [
+    {
+      "title": "Task 1",
+      "description": "This assignment is important",
+      "progress":"50",
+      "course":"Mathematics",
+      "due-date":"Sunday",
+      "status":"Behind",
+      "color":"#23d99f",
+      "hours":"5"
+    },
+    {
+        "title": "Task 2",
+        "description": "This assignment is not important",
+        "progress":"90",
+        "course":"English",
+        "due-date":"Saturday",
+        "status":"On time",
+        "color":"blue",
+        "hours":"8"
+
+    }
+   ]}

@@ -48,6 +48,12 @@ body{
     padding: 15px;
 }
 
+@media (max-width:1000px){
+    .inner_recs{
+        min-height: 120px;
+    }
+}
+
 .timer{
     background-color: white;
     margin-top: 5%;
@@ -80,7 +86,7 @@ h1{
 }
 
 .dropdown-menu {
-    max-width: 60px;
+    width: max-content !important;
     background-color: rgb(204, 183, 245);
   }
 
@@ -91,6 +97,13 @@ h1{
 .dropdown-item{
     max-width: 80px;
 }
+
+.dropdown-item:hover{
+    font-weight: bolder;
+    background:none;
+}
+
+
 
 .btn-group ul{
     max-width: 60px;
@@ -106,7 +119,9 @@ h1{
     border: none;
 }
 
-
+.order{
+    max-width: 60px;
+}
 
 .order::after{
     display: inline-block;
@@ -116,9 +131,20 @@ h1{
     margin-left: 5px;
   }
 
+.menu{
+    max-width: 30px;
+    background: none;
+}
+
+.menu::after{
+    display: none;
+  }
+
+.menu:hover{
+    background:none;
+}
+
 .task{
-    border-color: #4723D9;
-    border-left: 5px #4723D9;
     border-style: solid;
     padding: 10px;
     border-radius: 10px;
@@ -169,7 +195,6 @@ progress {
   }
   
 .className{
-    background-color: #4723d99d;
     color: white;
     padding: 5px;
     border-radius: 5px;
@@ -275,3 +300,30 @@ progress {
     pointer-events: none;
     opacity: 0.7;
   }
+
+  .modal-dialog {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+
+  #active{
+    font-weight: 900;
+  }
+
+  .bg{
+    background-color: rgb(211, 210, 207);
+    color: black;
+  }
+
+  .modal-title{
+    font-family: 'Inter';
+    font-weight: bold;
+    color: #18A0FB;
+    font-size: 20px;
+}
+
+.modal-body{
+    font-weight: bold;
+}
