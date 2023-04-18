@@ -137,9 +137,6 @@ loginForm.addEventListener('submit', (e) => {
 });
 
 
-
-
-
 document.addEventListener('DOMContentLoaded', () => {
   console.log('Content is loading');
   // Get references to the form-selects
@@ -165,6 +162,45 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+/*
+// Send school data to backend
+const studentform = document.getElementById('student-form');
+
+studentform.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const studentData = new FormData(createform);
+
+  // Build the data object from the form data
+  const data = {};
+  studentData.forEach((value, key) => {
+    data[key] = value;
+  });
+
+  // Set the headers for the request
+  const headers = new Headers();
+  headers.append('Content-Type', 'application/json');
+
+  // Send the data to the server
+  fetch('url', {
+    method: 'POST',
+    headers: headers,
+    body: JSON.stringify(data)
+  })
+  .then((response) => {
+    if (response.ok) {
+      console.log('Form data submitted successfully');
+       // Trigger the form-submitted event to open the student window
+       ipcRenderer.send('form-submitted', data, 'classes.html');
+    } else {
+      throw new Error('Failed to submit form');
+    }
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+});
+*/
 
 
 // adds area for new class time
@@ -276,9 +312,21 @@ function addViewContent() {
     const viewcontainer = document.querySelector('.classes-container');
     const viewClass = document.createElement('div');
     viewClass.innerHTML = `
-      <div">
-        <p>No recorded classes...</p>
-      </div>
+    <div class="card-body">
+    <div class="flex-row d-flex align-items-center justify-content-between">
+        <h5 class="card-title">Biology</h5>
+        <i class="fa-solid fa-circle-play fa-lg" style="color: #4723D9;"></i>
+    </div>
+    <div class="card-body">
+    <div class="flex-row d-flex align-items-center justify-content-between">
+        <h5 class="card-title">English</h5>
+        <i class="fa-solid fa-circle-play fa-lg" style="color: #4723D9;"></i>
+    </div>
+    <div class="card-body">
+    <div class="flex-row d-flex align-items-center justify-content-between">
+        <h5 class="card-title">Mathematics</h5>
+        <i class="fa-solid fa-circle-play fa-lg" style="color: #4723D9;"></i>
+    </div>
     `;
     viewcontainer.appendChild(viewClass);
   }
