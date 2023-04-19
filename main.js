@@ -12,7 +12,7 @@ const createWindow = () => {
       },
     }) 
   
-    win.loadFile('profile.html')
+    win.loadFile('create.html')
   }
 
   app.whenReady().then(() => {

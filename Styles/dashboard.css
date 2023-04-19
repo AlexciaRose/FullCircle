@@ -1,15 +1,202 @@
 @font-face {
-  font-family: Inter;
-  src: url("../Fonts/Inter-VariableFont_slnt,wght.ttf");
+    font-family: "Inter";
+    src: url(fonts/Inter-VariableFont_slnt\,wght.ttf);
 }
 
-@font-face {
-  font-family: Roboto;
-  src: url("../Fonts/Roboto-Regular.ttf");
+header p{
+    position: sticky ;
+    width: 365px;
+    height: 32px;
+    left: 352px;
+    top: 62px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 32px;
+    display: flex;
+    align-items: center;
+    letter-spacing: -0.017em;
+
+    color: #000000;
 }
 
-.nav_logo-name {
-  font-family: "Inter";
-  font-weight: bold;
-  font-size: 50px;
+
+
+.task-card-body{
+    font-family: Inter;
+    padding-left: 20px;
+    margin-top: 100px;
+    width: 425px;
+    height: 205px;
+    left: 362px;
+    top: 180px;
+
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
 }
+
+    .task-card-body h1{
+        font-weight: 600;
+        position: absolute;
+        padding-top: 22px;
+    }
+
+    .task-card-body h5{
+        font-family: Inter;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 20px;
+        padding-top:20px ;
+
+        color: #3065A9;
+    }
+    .task-card-body .fa-ellipsis-vertical{
+        position: absolute;
+        margin-left: 370px;
+        margin-top: 20px;
+    }
+
+    .fa-arrow-trend-up p{
+        position: relative;
+        font-family: 'Inter';
+        font-weight: 500;
+        color: #3065A9;
+        margin-left: 30px;
+        top: -16px;
+      }
+
+.resumeTasks-card-body{
+    font-family: Inter;
+    padding-left: 20px;
+    margin-top: 40px;
+    width: 450px;
+    height: 340px;
+    left: 362px;
+    top: 180px;
+
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+
+    .resumeTasks-card-body h5{
+        position: sticky;
+        font-family: Inter;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 33px;
+        padding-top: 20px;
+
+        color: #3065A9;
+    }
+
+    .resumeTasks-card-link{
+        font-family: Inter;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 15px;
+        line-height: 18px;
+        
+        color: #3065A9;
+    }
+
+    .resumeTasks-card-body .fa-ellipsis-vertical{
+        position: absolute;
+        margin-left: 400px;
+        margin-top: 20px;
+    }   
+
+    .resumeTasks-card-body .fa-circle{
+        position: absolute;
+        margin-top: 5px;
+        color: #3065A9;
+        
+    }
+
+    .resumeTasks-card-link{
+        position:absolute;
+        padding-top: 33px;
+        text-align: center;  
+        margin-left: 150px;
+        font-size: small;  
+    }
+
+
+    .circular-progress{
+        position: relative;
+        left: 280px;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: conic-gradient(#3065A9 3.6deg, #ededed 0deg);
+        display: flex;
+        align-items: center;
+        justify-content: center;  
+    }
+
+    .circular-progress::before{
+        content: "";
+        position: absolute;
+        height: 84px;
+        width: 84px;
+        border-radius: 50%;
+        background-color: #FFFFFF;
+
+    }
+
+    .progress-value{
+        position: relative;
+        font-size: 19px;
+        font-weight: 600;
+        color: #3065A9;
+    }
+
+.progress-bar1 {
+  width: 100%;
+  height: 20px;
+  background-color: #e0e0e0;
+  border-radius: 10px;
+}
+
+.progress-bar1-fill {
+  height: 100%;
+  background-color: #4caf50;
+  border-radius: 10px;
+  width: 0%;
+}
+
+.urgent-task-card-body{
+    position: relative;
+    font-family: Inter;
+    padding-left: 20px;
+    margin-top: 100px;
+    width: 400px;
+    height: 505px;
+    left: 500px;
+    margin-top: -586px;
+
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+
+    .urgent-task-card-body h5{
+        font-family: Inter;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 20px;
+        padding-top: 20px;
+
+        color: #3065A9;
+    }
+    .urgent-task-card-body .fa-ellipsis-vertical{
+        position: absolute;
+        margin-left: 350px;
+        margin-top: 20px;
+    }
+
+

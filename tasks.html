@@ -28,7 +28,7 @@
         <nav class="nav">
             <div> <a href="#" class="nav_logo"> <i class="fa-solid fa-circle-notch fa-rotate-90 fa-lg" style="color: #fcfcfc;"></i> <span class="nav_logo-name">FullCircle</span> </a>
                 <div class="nav_list"> 
-                    <a href="#" class="nav_link"> <i class="fa-solid fa-boxes-stacked" style="color: #e6e6e6;"></i> <span class="nav_name">Dashboard</span> </a> 
+                    <a href="dashboard.html" class="nav_link"> <i class="fa-solid fa-boxes-stacked" style="color: #e6e6e6;"></i> <span class="nav_name">Dashboard</span> </a> 
                     <a href="tasks.html" class="nav_link active"> <i class="fa-solid fa-folder" style="color: #e6e6e6;"></i> <span class="nav_name">Tasks</span> </a> 
                     <a href="calendar.html" class="nav_link"> <i class="fa-solid fa-calendar" style="color: #e6e6e6;"></i> <span class="nav_name">Schedule</span> </a> 
                     <a href="profile.html" class="nav_link"> <i class="fa-solid fa-user" style="color: #e6e6e6;"></i> <span class="nav_name">Profile</span> </a> 
@@ -45,7 +45,7 @@
       
     </div>
     <div class="vh-100 row">
-        <div class="taskbar col-8">
+        <div class="taskbar col-9">
             <div class="row d-flex align-items-center">
                 <h1 class="col-9">Tasks</h1>
                 <div class="btn-group col-3">
@@ -90,6 +90,49 @@
                     </ul>
                 </div>
             </div>
+
+            <div class="task-container mt-5">
+                <div class="task-header">
+                 <div class="task-title">Title</div>
+                  <div class="task-status">Status</div>
+                  <div class="task-progress">Progress</div>
+                  <div class="task-due-date">Due Date</div>
+                  <div class="task-time-remaining">Time Remaining</div>
+                </div>
+                <div class="task-cards w-100" id="task-cards">
+       <!--  <div class="task-card w-100">
+                 <span class="icon" ></span> <div class="title">Mathematics Homework</div>
+                    <div class="status"> <div class="stat">
+                      Incomplete
+                    </div></div>
+                    <div class="prog">
+                      <progress value="25" max="100"></progress>
+                    </div>
+                    <div class="due-date">2023-04-30</div>
+                    <div class="time-remaining">08:05 </div>
+                  </div>
+
+                  <div class="task-card w-100">
+                  <span class="icon"></span>  <div class="title">Task Title</div>
+                      <div class="status"> <div class="stat">
+                        Incomplete
+                      </div></div>
+                      <div class="prog">
+                        <progress value="25" max="100"></progress>
+                      </div>
+                      <div class="due-date">2023-04-30</div>
+                      <div class="time-remaining">08:05 </div>
+                    </div>-->       
+                
+              </div>
+            </div>
+            
+        <script>
+          
+        </script>
+
+
+
 <!--
  <div class="mt-5" id="task-container">
                 <div class="task" style=" border-color: #23d99f; border-left: 5px #23d99f;">
@@ -118,8 +161,6 @@
                                 <li class="list-inline-item dueDate" id="dueDate"> <i class="fa-solid fa-calendar me-2" style="color: #a3a3a3;"></i> Friday</li>
                                 <li class="list-inline-item status" id="status">On Time</li>
                               </ul>
-
-                        
                     </div>
                      
                 </div>

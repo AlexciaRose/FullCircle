@@ -97,7 +97,53 @@ createform.addEventListener('submit', (e) => {
 });
 
 
+const loginForm = document.getElementById('login-form');
 
+loginForm.addEventListener('submit', (event) => {
+  event.preventDefault(); // prevent default form submission behavior
+
+  // show the loading spinner
+  const spinner = document.createElement('div');
+  spinner.classList.add('spinner');
+  document.body.appendChild(spinner);
+
+  // send login request
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+  const formData = new FormData();
+  formData.append('email', email);
+  formData.append('password', password);
+
+  fetch('https://rest-api-flask-python-fullcircle.onrender.com/login', {
+    method: 'POST',
+    body: formData,
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      // hide the loading spinner
+      spinner.remove();
+
+      if (data.success) {
+        // redirect to dashboard page
+        window.location.href = '/dashboard.html';
+      } else {
+        // display error message
+        alert(data.message);
+      }
+    })
+    .catch((error) => {
+      // hide the loading spinner
+      spinner.remove();
+
+      // display error message
+      alert(error.message);
+    });
+});
+
+
+
+
+/*
 // Sends login data to backend
 const loginForm = document.getElementById('login-form');
 
@@ -142,6 +188,7 @@ loginForm.addEventListener('submit', (e) => {
   window.location.href = 'profile.html';
 });
 
+*/
 
 document.addEventListener('DOMContentLoaded', () => {
   console.log('Content is loading');
