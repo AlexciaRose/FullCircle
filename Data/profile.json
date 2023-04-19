@@ -1,0 +1,27 @@
+{"classes": [
+    {
+      "title": "Mathematics",
+      "day1": "Thursday",
+      "time1":"7:00 - 8:00",
+      "day2": "Friday",
+      "time2":"9:00 - 10:00",
+      "complete":"12"
+    },
+    {
+        "title": "Daniel",
+      "day1": "Monday",
+      "time1":"4:00 - 8:00",
+      "day2": "Friday",
+      "time2":"10:00 - 12:00",
+      "complete":"15"
+    },
+    {
+        "title": "Biology",
+        "day1": "Tuesday",
+        "time1":"1:00 - 3:00",
+        "day2": "Wednesday",
+        "time2":"9:00 - 10:00",
+        "complete":"3"
+  }
+
+   ]}

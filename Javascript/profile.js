@@ -1,14 +1,37 @@
-const express = require('express');
-const app = express();
+const profContainer = document.getElementById('class-list');
 
-// define a server-side endpoint that returns some data
-app.get('/data', (req, res) => {
-  const data = {
-    title: 'Programming 2',
-    text: 'Monday, 10:00am - 12:30pm\nWednesday, 10:00am - 12:30pm\n12 complete'
-  };
-  res.json(data);
-});
 
-// start the server
-app.listen(3000, () => console.log('Server started on port 3000'));
+fetch('Data/profile.json')
+  .then(response => response.json())
+  .then(data => {
+    let classes = data.classes;
+  
+
+    const displayClasses = (classes) => {
+      profContainer.innerHTML = '';
+
+      classes.forEach((classe) => {
+
+      const newClass = document.createElement('div');
+      newClass.classList.add('col');
+            newClass.innerHTML =`<div class="card">
+                                <div class="card-body">
+                                  <h5 class="card-title">${classe.title}</h5>
+                                  <p class="card-text">${classe.day1}, ${classe.time1} <br> ${classe.day2}, ${classe.time2} <br> ${classe.complete} complete
+                                  </p>
+                                </div>
+                              </div>`;
+              profContainer.appendChild(newClass);
+  
+  });
+
+};
+
+
+// Display all tasks by default
+displayClasses(classes);
+
+  });
+
+
+  
