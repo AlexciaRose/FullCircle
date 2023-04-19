@@ -85,6 +85,20 @@ fetch('Data/task-info.json')
   .catch(error => console.error(error));
 
 
+
+  const email = 'group@gmail.com';
+  const password = 'password';
+  const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6dHJ1ZSwiaWF0IjoxNjgxODgxMTc2LCJqdGkiOiJmMDUyMDcyMC03ZDMxLTRiNmItYjMyZi1mMzliZWE3YThhNjciLCJ0eXBlIjoiYWNjZXNzIiwic3ViIjoxLCJuYmYiOjE2ODE4ODExNzYsImV4cCI6MTY4MTg4MjA3Nn0.6qBfwBQKm_iWjybSvTTbVDVHxTn5yAV6QXWkxgAc0Uk';
+  const headers = new Headers();
+  headers.append('Authorization', 'Basic ' + btoa(email + ':' + password) + ', Bearer ' + token);
+
+fetch('https://rest-api-flask-python-fullcircle.onrender.com/institutions', {
+  headers: headers
+})
+    .then(response => response.json())
+    .then(data => console.log(data));
+    
+
 // Populate tasks
 const taskContainer = document.getElementById('task-container');
 const courseDropdown = document.querySelector('.btn-group .dropdown-menu');
@@ -165,3 +179,37 @@ fetch('Data/task-info.json')
     });
   })
   .catch(error => console.error(error));
+
+
+  //Get dates
+  const now = new Date();
+  //Array of month names
+  const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+  //get current date and time
+  const year = now.getFullYear();
+  const month = now.getMonth() + 1;
+  const day = now.getDate();
+  const hours = now.getHours();
+  const minutes = now.getMinutes();
+  const seconds = now.getSeconds();
+
+  const monthName = monthNames[now.getMonth()];
+
+  document.getElementById('date').textContent = `${monthName} ${day}`;
+
+  console.log(`${year}-${month}-${day} ${hours}:${minutes}:${seconds}`);
+
+
+  const recsContainer = document.getElementById('inner_recs');
+
+  const newRec = document.createElement('div');
+  newRec.classList.add('card-body');
+        newRec.innerHTML =`
+                              <div class="flex-row d-flex align-items-center justify-content-between">
+                                  <h5 class="card-title">Mathematics Homework</h5>
+                                  <i class="fa-solid fa-circle-play fa-lg" style="color: #4723D9;"></i>
+                              </div>
+                            <h6 class="card-subtitle mb-2 text-body-secondary">2pm - 3pm</h6>
+                          `;
+          recsContainer.appendChild(newRec);

@@ -1,23 +1,34 @@
 {"tasks": [
     {
-      "title": "Task 1",
-      "description": "This assignment is important",
+      "title": "Mathematics Homework",
+      "description": "Calculus",
       "progress":"50",
       "course":"Mathematics",
       "due-date":"Sunday",
       "status":"Behind",
       "color":"#23d99f",
-      "hours":"5"
+      "hours":"5" 
     },
     {
-        "title": "Task 2",
-        "description": "This assignment is not important",
+        "title": "English Essay",
+        "description": "Write a persuasive essay on any topic of your choice.",
         "progress":"90",
         "course":"English",
         "due-date":"Saturday",
         "status":"On time",
         "color":"blue",
         "hours":"8"
+    },
+    {
+      "title": "Biology Q&A",
+      "description": "Answer the questions on pages 12-15.",
+      "progress":"30",
+      "course":"Biology",
+      "due-date":"18/04/2023",
+      "status":"On time",
+      "color":"yellow",
+      "hours":"8"
 
-    }
+  }
+
    ]}
