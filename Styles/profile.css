@@ -217,6 +217,7 @@ a{
     padding: 10px;
     margin:10px;
     flex: 40%;
+    box-shadow: 5px 10px rgb(159, 159, 171);
   }
   
   /* Responsive layout - makes a one column-layout instead of two-column layout */
