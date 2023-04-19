@@ -14,6 +14,26 @@
      
      <!--Bootstrap Optional Javascript-->
      <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!--Javascript file-->
+    <!-- add this script tag to the head section of your HTML file -->
+<script>
+  function loadData() {
+    // make an AJAX request to the server-side endpoint
+    fetch('/data')
+      .then(response => response.json())
+      .then(data => {
+        // update the HTML elements with the response data
+        const cardTitle = document.querySelector('.card-title');
+        const cardText = document.querySelector('.card-text');
+        cardTitle.textContent = data.title;
+        cardText.textContent = data.text;
+      })
+      .catch(error => console.error(error));
+  }
+</script>
+
+<!-- add this button to the body section of your HTML file -->
+<button onclick="loadData()">Load Data</button>
 
     <title>Profile</title>
 </head>
@@ -51,37 +71,38 @@
         <div class="row row-cols-1 row-cols-md-2 g-4">
             <div class="col">
               <div class="card">
-                <img src="..." class="card-img-top" alt="...">
+                
                 <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <h5 class="card-title">Programming 2</h5>
+                  <p class="card-text">Monday, 10:00am - 12:30pm <br> Wednesday, 10:00am - 12:30pm <br> 12 complete
+                  </p>
                 </div>
               </div>
             </div>
             <div class="col">
               <div class="card">
-                <img src="..." class="card-img-top" alt="...">
+                
                 <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <h5 class="card-title">Pre-Calculus 1</h5>
+                  <p class="card-text">Tuesday, 8:00am - 10:00pm <br> Thursday, 8:00am - 10:00pm <br> 12 complete</p>
                 </div>
               </div>
             </div>
             <div class="col">
               <div class="card">
-                <img src="..." class="card-img-top" alt="...">
+                
                 <div class="card-body">
-                  <h5 class="card-title">Card title3</h5>
-                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+                  <h5 class="card-title">Data Structures</h5>
+                  <p class="card-text">Monday, 10:00am - 12:30pm <br> Wednesday, 10:00am - 12:30pm <br> 12 complete</p>
                 </div>
               </div>
             </div>
             <div class="col">
               <div class="card">
-                <img src="..." class="card-img-top" alt="...">
+               
                 <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <h5 class="card-title">Daniel</h5>
+                  <p class="card-text">Tuesday, 8:00am - 10:00pm <br> Thursday, 8:00am - 10:00pm <br> 12 complete</p>
                 </div>
               </div>
             </div>
