@@ -102,8 +102,9 @@ createform.addEventListener('submit', (e) => {
 const loginForm = document.getElementById('login-form');
 
 loginForm.addEventListener('submit', (e) => {
-  console.log('Rdirecting');
   e.preventDefault();
+  console.log('Redirecting');
+  
 
   const loginData = new FormData(loginForm);
 
@@ -125,8 +126,11 @@ loginForm.addEventListener('submit', (e) => {
   })
   .then((response) => {
     if (response.ok) {
+      console.log('Response status:', response.status);
       console.log('Login successful');
-      ipcRenderer.send('form-submitted', data, 'profile.html');
+
+      window.location.href = 'profile.html';
+      //ipcRenderer.send('form-submitted', data, 'profile.html');
     } else {
       throw new Error('Failed to log in');
     }
@@ -134,6 +138,8 @@ loginForm.addEventListener('submit', (e) => {
   .catch((error) => {
     console.error(error);
   });
+
+  window.location.href = 'profile.html';
 });
 
 

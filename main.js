@@ -10,9 +10,9 @@ const createWindow = () => {
         nodeIntegration: true,
         contextIsolation: false, // To use require() in the renderer process
       },
-    })
+    }) 
   
-    win.loadFile('create.html')
+    win.loadFile('profile.html')
   }
 
   app.whenReady().then(() => {
