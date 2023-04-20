@@ -69,4 +69,29 @@ var chart = new Chart(chartCanvas, {
       }
   }
 });
+/*  
+// Update name
+document.getElementById('update-name').addEventListener('click', function() {
+  // Show form to update name
+  console.log('Update Name clicked');
+});
+
+// Update password
+document.getElementById('update-password').addEventListener('click', function() {
+  // Show form to update password
+  console.log('Update Password clicked');
+});
+
+// Delete account
+document.getElementById('delete-account').addEventListener('click', function() {
+  // Show confirmation dialog
+  var result = confirm("Are you sure you want to delete your account?");
+  if (result) {
+    console.log('Account deleted');
+  }
+});
+
+
+
+*/
   
