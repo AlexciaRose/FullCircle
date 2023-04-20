@@ -1,6 +1,6 @@
 @font-face {
     font-family: "Inter";
-    src: url(fonts/Inter-VariableFont_slnt\,wght.ttf);
+    src: url(../Fonts/Inter-VariableFont_slnt\,wght.ttf);
 }
 
 header p{
@@ -25,7 +25,7 @@ header p{
 
 
 .task-card-body{
-    font-family: Inter;
+    font-family: 'Inter';
     padding-left: 20px;
     margin-top: 100px;
     width: 425px;
@@ -45,7 +45,7 @@ header p{
     }
 
     .task-card-body h5{
-        font-family: Inter;
+        font-family: 'Inter';
         font-style: normal;
         font-weight: 700;
         font-size: 20px;
@@ -113,7 +113,7 @@ header p{
     .resumeTasks-card-body .fa-circle{
         position: absolute;
         margin-top: 5px;
-        color: #3065A9;
+        color: #4723D9;
         
     }
 
@@ -148,7 +148,7 @@ header p{
 
     }
 
-    .progress-value{
+  /*  .progress-value{
         position: relative;
         font-size: 19px;
         font-weight: 600;
@@ -168,6 +168,23 @@ header p{
   border-radius: 10px;
   width: 0%;
 }
+*/
+
+progress {
+    height: 15px;
+    border-radius: 5px;
+    width:50%;
+  }
+  
+  progress::-webkit-progress-bar {
+    background-color: #e6e6e6;
+    border-radius: 10px;
+  }
+  
+  progress::-webkit-progress-value {
+    background-color: #4723D9;
+    border-radius: 10px;
+  }
 
 .urgent-task-card-body{
     position: relative;

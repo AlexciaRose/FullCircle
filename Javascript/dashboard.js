@@ -46,4 +46,45 @@ function updateProgressBar(progressPercentage) {
 
 
 
+const incomplete = document.querySelector('.progress-container');
+
+fetch('Data/dashboard.json')
+
+.then(response => response.json())
+.then(data => {
+  
+  let inclTasks = data.tasks;
+
+
+  const displayinclTasks = (inclTasks) => {
+    incomplete.innerHTML = '';
+
+    inclTasks.forEach((inclTask) => {
+
+    const newincl = document.createElement('div');
+    
+          newincl.innerHTML =`<i class="fa-solid fa-circle"></i>
+                                  <p id="task-1">${inclTask.title}
+                                    <style>
+                                      #task-1{
+                                        margin-left: 30px;
+                                        font-weight: 500;
+                                      }
+                                    </style>
+                                    <div class="">
+                                      <progress value="${inclTask.progress}" max="100" min="0"></progress><span style="color: black;">${inclTask.progress}%</span>
+                                    </div>
+                                  </p>`; 
+            incomplete.appendChild(newincl);
+
+});
+
+};
+
+
+// Display all tasks by default
+  displayinclTasks(inclTasks);
+
+});
+
 

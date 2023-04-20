@@ -20,6 +20,21 @@ const createWindow = () => {
   })
 
   
+
+//using electron-store to store tokens
+  const Store = require('electron-store');
+  const store = new Store();
+  
+  ipcMain.on('access-token', (event, accessToken) => {
+    store.set('access_token', accessToken);
+  });
+  
+  ipcMain.on('refresh-token', (event, refreshToken) => {
+    store.set('refresh_token', refreshToken);
+  });
+
+
+
 // Redirecting to other windows
 function createStudentWindow(pageName) {
   win.loadFile(pageName);

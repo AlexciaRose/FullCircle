@@ -1,3 +1,12 @@
+const Store = require('electron-store');
+const store = new Store();
+
+const accessToken = store.get('access_token');
+const refreshToken = store.get('refresh_token');
+
+
+
+
 let hr = min = sec = ms = "0" + 0,
 startTimer;
 
@@ -70,20 +79,57 @@ const selectedCourse = document.querySelector('.selected-course');
 */
 
   
-    
 
+   //tasklist
+
+      const taskCards = document.getElementById('task-cards');
+      fetch('https://rest-api-flask-python-fullcircle.onrender.com/tasks')
+      .then(response => response.json())
+      .then(data => {
+      let card = data;
+      const displayCards = (card) => {
+        taskCards.innerHTML = ``;
+
+        card.forEach((card) => {
+          const newCard = document.createElement('div');
+          newCard.classList.add('task-card', 'w-100');
+            newCard.innerHTML=` 
+                                  <span class="icon" ></span><div class="title">${card.TaskName}</div>
+                                    <div class="status"><div class="stat">
+                                    behind
+                                    </div></div>
+                                    <div class="prog">
+                                      <progress value="25" max="100"></progress>
+                                    </div>
+                                    <div class="due-date">${card.DueDate}</div>
+                                    <div class="time-remaining">08:05 </div>
+                                  `;
+
+          taskCards.appendChild(newCard);
+
+
+          const icon = newCard.querySelector('.icon');
+        icon.addEventListener('click', function() {
+          console.log('button was clicked');
+    });
+          
+        });
+      };
+      displayCards(card)
+    })
+
+
+
+/*
 // Populate tasks
 const taskContainer = document.getElementById('task-container');
 const courseDropdown = document.querySelector('.btn-group .dropdown-menu');
 
 
-  const email = 'group@gmail.com';
-  const password = 'password';
-  const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6dHJ1ZSwiaWF0IjoxNjgxODg5MjE1LCJqdGkiOiIxOTI0MzEwYy03YmIzLTQ3NzUtYTdjZC1kOTM4ZDJmODYxOWYiLCJ0eXBlIjoiYWNjZXNzIiwic3ViIjoxLCJuYmYiOjE2ODE4ODkyMTUsImV4cCI6MTY4MTg5MDExNX0.4O8Vhk1sapfRkZtPeyY_gLIvqQ8A77DGpwAfucftQOg';
-  const headers = new Headers();
-  headers.append('Authorization', 'Basic ' + btoa(email + ':' + password) + ', Bearer ' + token);
+ const headers = new Headers();
+ headers.append('Authorization', 'Bearer ' + accessToken);
 
-/*
+
 fetch('https://rest-api-flask-python-fullcircle.onrender.com/tasks', {
   headers: headers
 })
@@ -162,8 +208,8 @@ const courses = new Set(tasks.map(task => task.Courses)); // Use a Set to get un
 
   })
   .catch(error => console.error(error));
-*/
 
+*/
 /*
   // Select the class for a task
 const classDropdown = document.getElementById('task-class');
@@ -248,43 +294,5 @@ fetch('https://rest-api-flask-python-fullcircle.onrender.com/tasks', {
           })
 
 
-          //tasklist
-
-      const taskCards = document.getElementById('task-cards');
-           fetch('Data/task-info.json')
-          .then(response => response.json())
-          .then(data => {
-          let card = data.tasks;
-          const displayCards = (card) => {
-            taskCards.innerHTML = ``;
-
-            card.forEach((task) => {
-              const newCard = document.createElement('div');
-              newCard.classList.add('task-card', 'w-100');
-                newCard.innerHTML=` 
-                                      <span class="icon" ></span><div class="title">${task.title}</div>
-                                        <div class="status"><div class="stat">
-                                        ${task.status}
-                                        </div></div>
-                                        <div class="prog">
-                                          <progress value="${task.progress}" max="100"></progress>
-                                        </div>
-                                        <div class="due-date">${task['due-date']}</div>
-                                        <div class="time-remaining">08:05 </div>
-                                      `;
-
-              taskCards.appendChild(newCard);
-
-
-              const icon = newCard.querySelector('.icon');
-             icon.addEventListener('click', function() {
-              console.log('button was clicked');
-    });
-              
-            });
-          };
-          displayCards(card)
-        })
-
-
+       
        
