@@ -15,9 +15,9 @@
      <!--Bootstrap Optional Javascript-->
      <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <!--Javascript file-->
-    <!-- add this script tag to the head section of your HTML file -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+    <!-- add this script tag to the head section of your HTML file -->
 <script>
   function loadData() {
     // make an AJAX request to the server-side endpoint
@@ -34,8 +34,6 @@
   }
 </script>
 
-<!-- add this button to the body section of your HTML file -->
-<button onclick="loadData()">Load Data</button>
 
     <title>Profile</title>
 </head>
@@ -50,7 +48,7 @@
                 <div class="nav_list"> 
                     <a href="dashboard.html" class="nav_link"> <i class="fa-solid fa-boxes-stacked" style="color: #e6e6e6;"></i> <span class="nav_name">Dashboard</span> </a> 
                     <a href="tasks.html" class="nav_link"> <i class="fa-solid fa-folder" style="color: #e6e6e6;"></i> <span class="nav_name">Tasks</span> </a> 
-                    <a href="#" class="nav_link"> <i class="fa-solid fa-calendar" style="color: #e6e6e6;"></i> <span class="nav_name">Schedule</span> </a> 
+                    <a href="calendar.html" class="nav_link"> <i class="fa-solid fa-calendar" style="color: #e6e6e6;"></i> <span class="nav_name">Schedule</span> </a> 
                     <a href="profile.html" class="nav_link  active"> <i class="fa-solid fa-user" style="color: #e6e6e6;"></i> <span class="nav_name">Profile</span> </a> 
                   
                 </div>
@@ -73,7 +71,6 @@
     <div class="row row-cols-1 row-cols-md-2 g-4" id="class-list">
       
           <!--
-
             <div class="col">
               <div class="card">
                 <div class="card-body">
@@ -82,7 +79,6 @@
                 </div>
               </div>
             </div>
-
             <div class="col">
               <div class="card">
                 <div class="card-body">
@@ -91,7 +87,6 @@
                 </div>
               </div>
             </div>
-
             <div class="col">
               <div class="card">
                
@@ -104,11 +99,11 @@
     </div><br>
           <centre>
           <div class="flex-container">
-            <div class="flex-item-left" id="myChartContainer">Activity</div>
-            <div class="flex-item-right">Progress</div>
+            <div class="flex-item-left" id="myChartContainer" ><canvas id="myChart"></canvas></div>
           </div>
-        </center>
-    <script src="main.js"></script>
+        </centre>
 
+    <script src="Javascript/profile.js"></script>
+    <script src="Javascript/sidenav.js"></script>
 </body>
 </html>
