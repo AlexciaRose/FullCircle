@@ -234,5 +234,53 @@ a{
     box-shadow: 5px 10px rgb(57, 50, 205);
 
 }
+/*Modal Style*/
+/* Set the modal width and center it on the screen */
+.modal-dialog {
+  max-width: 600px;
+  margin: auto;
+}
+
+/* Style the modal header */
+.modal-header {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+}
+
+/* Style the modal title */
+.modal-title {
+  font-weight: 600;
+}
+
+/* Style the modal body input fields */
+.modal-body input[type=text] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Style the modal body buttons */
+.modal-body button[type=submit] {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+/* Style the modal footer button */
+.modal-footer button {
+  background-color: #6c757d;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
 
 
