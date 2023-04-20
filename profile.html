@@ -15,6 +15,8 @@
      <!--Bootstrap Optional Javascript-->
      <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <!--Javascript file-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <!-- add this script tag to the head section of your HTML file -->
 <script>
   function loadData() {
@@ -32,8 +34,6 @@
   }
 </script>
 
-<!-- add this button to the body section of your HTML file -->
-<button onclick="loadData()">Load Data</button>
 
     <title>Profile</title>
 </head>
@@ -48,7 +48,7 @@
                 <div class="nav_list"> 
                     <a href="dashboard.html" class="nav_link"> <i class="fa-solid fa-boxes-stacked" style="color: #e6e6e6;"></i> <span class="nav_name">Dashboard</span> </a> 
                     <a href="tasks.html" class="nav_link"> <i class="fa-solid fa-folder" style="color: #e6e6e6;"></i> <span class="nav_name">Tasks</span> </a> 
-                    <a href="#" class="nav_link"> <i class="fa-solid fa-calendar" style="color: #e6e6e6;"></i> <span class="nav_name">Schedule</span> </a> 
+                    <a href="calendar.html" class="nav_link"> <i class="fa-solid fa-calendar" style="color: #e6e6e6;"></i> <span class="nav_name">Schedule</span> </a> 
                     <a href="profile.html" class="nav_link  active"> <i class="fa-solid fa-user" style="color: #e6e6e6;"></i> <span class="nav_name">Profile</span> </a> 
                   
                 </div>
@@ -58,20 +58,47 @@
     
         <!--Main body of information-->
         <img src="Images/ava.jpg" alt="Avatar" class="avatar">
-        <centre><h1>Profile</h1>
+        <center><h1>Profile</h1>
             <div class="dropdown">
                 <button class="dropbtn">Edit</button>
                 <div class="dropdown-content" style="left:0;">
-                <a href="classes.html">Edit Profile</a>
-                <a href="login.html">Delete account </a>
-                <a href="create.html">Update name and password</a>
+                <a data-bs-toggle="modal" data-bs-target="#exampleModal" >Edit Profile</a>
                 </div>
               
-           </centre><br><br><br><br><br>
+           </center>
+           <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div>
+          <form>
+            <input type="text" name="name" placeholder="First name" required>
+            <input type="text" name="name" placeholder="Last name" required>
+            <input type="text" name="name" placeholder="Email" required>
+            <input type="text" name="name" placeholder="Password" required>
+            <button type="submit" value="submit" class="btn-field">Update<br/>
+            <button type="submit" value="submit" class="btn-field">Delete<br/>
+          </form>
+        </div>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+           
+           <br><br><br><br><br>
     <div class="row row-cols-1 row-cols-md-2 g-4" id="class-list">
       
           <!--
-
             <div class="col">
               <div class="card">
                 <div class="card-body">
@@ -80,7 +107,6 @@
                 </div>
               </div>
             </div>
-
             <div class="col">
               <div class="card">
                 <div class="card-body">
@@ -89,7 +115,6 @@
                 </div>
               </div>
             </div>
-
             <div class="col">
               <div class="card">
                
@@ -102,12 +127,11 @@
     </div><br>
           <centre>
           <div class="flex-container">
-            <div class="flex-item-left">Activity</div>
-            <div class="flex-item-right">Progress</div>
+            <div class="flex-item-left" id="myChartContainer"><canvas id="myChart"></canvas></div>
           </div>
         </centre>
 
     <script src="Javascript/profile.js"></script>
-
+    <script src="Javascript/sidenav.js"></script>
 </body>
 </html>

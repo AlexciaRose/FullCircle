@@ -208,16 +208,10 @@ a{
     background-color: #f1f1f1;
     padding: 10px;
     margin:10px;
-    flex: 50%;
     box-shadow: 5px 10px rgb(57, 50, 205);
+    width:400px;
   }
   
-  .flex-item-right {
-    background-color: dodgerblue;
-    padding: 10px;
-    margin:10px;
-    flex: 40%;
-  }
   
   /* Responsive layout - makes a one column-layout instead of two-column layout */
   @media (max-width: 800px) {

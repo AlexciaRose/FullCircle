@@ -20,6 +20,43 @@
         });
         calendar.render();
       });
+      //testing
+      document.addEventListener('DOMContentLoaded', function() {
+  var calendarEl = document.getElementById('calendar');
+  var calendar = new FullCalendar.Calendar(calendarEl, {
+    initialView: 'dayGridMonth',
+    events: [
+      {
+        title: 'Monday Class',
+        start: '2023-04-24',
+        classNames: ['monday-class']
+      },
+      {
+        title: 'Tuesday Class',
+        start: '2023-04-25',
+        classNames: ['tuesday-class']
+      },
+      {
+        title: 'Wednesday Class',
+        start: '2023-04-26',
+        classNames: ['wednesday-class']
+      },
+      {
+        title: 'Thursday Class',
+        start: '2023-04-27',
+        classNames: ['thursday-class']
+      },
+      {
+        title: 'Friday Class',
+        start: '2023-04-28',
+        classNames: ['friday-class']
+      }
+    ]
+  });
+  calendar.render();
+});
+
+
 
     </script>
   </head>
@@ -32,7 +69,7 @@
     <nav class="nav">
         <div> <a href="#" class="nav_logo"> <i class="fa-solid fa-circle-notch fa-rotate-90 fa-lg" style="color: #fcfcfc;"></i> <span class="nav_logo-name">FullCircle</span> </a>
             <div class="nav_list"> 
-                <a href="#" class="nav_link active"> <i class="fa-solid fa-boxes-stacked" style="color: #e6e6e6;"></i> <span class="nav_name">Dashboard</span> </a> 
+                <a href="dashboard.html" class="nav_link active"> <i class="fa-solid fa-boxes-stacked" style="color: #e6e6e6;"></i> <span class="nav_name">Dashboard</span> </a> 
                 <a href="tasks.html" class="nav_link"> <i class="fa-solid fa-folder" style="color: #e6e6e6;"></i> <span class="nav_name">Tasks</span> </a> 
                 <a href="calendar.html" class="nav_link"> <i class="fa-solid fa-calendar" style="color: #e6e6e6;"></i> <span class="nav_name">Schedule</span> </a> 
                 <a href="profile.html" class="nav_link"> <i class="fa-solid fa-user" style="color: #e6e6e6;"></i> <span class="nav_name">Profile</span> </a> 
