@@ -233,9 +233,5 @@ a{
     box-shadow: 5px 10px rgb(57, 50, 205);
 
 }
-.btn-field{
-    width: 100%;
-    display:flex;
-    justify-content: space-between;
-}
+
 
