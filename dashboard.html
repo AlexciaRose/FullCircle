@@ -7,8 +7,8 @@
     <title>FullCircle - Dashboard</title>
     
     <!--CSS links-->
-    <link rel="stylesheet" href="Styles/dashboard.css"> 
-    <link rel="stylesheet" href="Styles/sidenav.css"> 
+    <link rel="stylesheet" href="dashboard.css"> <!--change to match folders-->
+    <link rel="stylesheet" href="sidenav.css"> <!--change to match folders-->
 
     <!--bootstrap 5 css file-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -50,7 +50,7 @@
                   <a href="dashboard.html" class="nav_link active"> <i class="fa-solid fa-boxes-stacked" style="color: #e6e6e6;"></i> <span class="nav_name">Dashboard</span> </a> 
                   <a href="tasks.html" class="nav_link"> <i class="fa-solid fa-folder" style="color: #e6e6e6;"></i> <span class="nav_name">Tasks</span> </a> 
                   <a href="" class="nav_link"> <i class="fa-solid fa-calendar" style="color: #e6e6e6;"></i> <span class="nav_name">Schedule</span> </a> 
-                  <a href="profile.html" class="nav_link"> <i class="fa-solid fa-user" style="color: #e6e6e6;"></i> <span class="nav_name">Profile</span> </a> 
+                  <a href="#" class="nav_link"> <i class="fa-solid fa-user" style="color: #e6e6e6;"></i> <span class="nav_name">Profile</span> </a> 
                 
               </div>
           </div> <a href="#" class="nav_link"> <i class="fa-solid fa-right-from-bracket" style="color: #e8e8e8;"></i> <span class="nav_name">Logout</span> </a>
@@ -58,14 +58,14 @@
   </div>
 
   <!--Tasks Completed card-->
-  <div class="task-card" style="width: 24rem;">
-    <div class="task-card-body">
+  <div class="task-card" style="width: 24rem;  display: flex; flex-direction: column;">
+      <div class="task-card-body" style="flex-grow: 1;">
       <a href="tasks.html"><i class="fa-solid fa-ellipsis-vertical"></i></a>
       <h5 class="task-card-title">Tasks Completed</h5>
 
       <h1>
         <script>
-          document.write('12') /*add function name for amount of tasks completed*/
+         document.write('12') /*add function name for amount of tasks completed*/
         </script>
       </h1>
 
@@ -73,10 +73,11 @@
         <style>
           .fa-arrow-trend-up{
             position: absolute;
-            padding-top: 110px;
+            padding-top: 176px;
             color: #3065A9;
           }
         </style>
+        <p>You have <span id="taskCompleted"></span> tasks completed and <span id="incompleteTasks"></span> tasks remaining.</p>
         <p>Keep going!</p>
       </i>
 
@@ -90,15 +91,16 @@
     </div>
   </div>
 
+
     <!--Resume Incomplete Tasks card-->
-    <div class="resumeTasks-card" style="width: 24rem;">
-      <div class="resumeTasks-card-body">
+    <div class="resumeTasks-card" style="width: 24rem; display: flex; flex-direction: column;">
+      <div class="resumeTasks-card-body" style="flex-grow: 1;">
         <a href="tasks.html"><i class="fa-solid fa-ellipsis-vertical"></i></a>
         <h5 class="resumeTasks-card-title">Resume Incomplete Tasks</h5>
 
         
         <div class="container">
-     <div class="progress-container">
+          <div class="progress-container">
             <!--<i class="fa-solid fa-circle"></i>
             <p id="task-1">Task 1
               <style>
@@ -108,10 +110,11 @@
                 }
               </style>
               <div class="">
-                <progress value="25" max="100" min="0"></progress><span style="color: black;">25%</span>
-              </div>
-            </p>-->
-        </div>     
+                <progress value="25" max="100" min="0"></progress>
+                </div>
+            </p> -->
+            
+        </div>
       </div>
         
         <a href="tasks.html" class="resumeTasks-card-link">View all tasks</a>
@@ -119,20 +122,36 @@
       </div>
     </div> 
 
+
+    <!--Urgent Tasks Card-->
     <div class="urgent-task-card" style="width: 24rem;">
       <div class="urgent-task-card-body">
          <a href="tasks.html"><i class="fa-solid fa-ellipsis-vertical"></i></a>
         <h5 class="task-card-title">Urgent Tasks</h5>
-          
+        <p style="font-size: smaller; color: #3065A9;">Complete these ASAP.</p>
+        
           </div>
       </div>
+
+      <div class="sticky-note">
+        <div class="sticky-note-header">
+          <span class="sticky-note-title">Sticky Note</span>
+          <button class="sticky-note-close">x</button>
+        </div>
+        <div class="sticky-note-content">
+          <textarea class="sticky-note-text"></textarea>
+        </div>
+      </div>
+      
   
+    <script src="sidenav.js"></script>
+    <script src="dashboard.js"></script>
 
-
+<!-- change to the above two lines to:
     <script src="Javascript/sidenav.js"></script>
     <script src="Javascript/dashboard.js"></script>
+  -->
+
   </body>
-
-
 
 </html>
