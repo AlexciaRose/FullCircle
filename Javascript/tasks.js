@@ -69,27 +69,35 @@ function putValue() {
 const courseMenu = document.querySelector('.course-menu');
 const selectedCourse = document.querySelector('.selected-course');
 
-/*fetch('Data/task-info.json')
-  .then(response => response.json())
-  .then(data => {
-    
-  })
-  .catch(error => console.error(error));
-
-*/
 
   
-
-   //tasklist
+const courseDropdown = document.querySelector('.btn-group .dropdown-menu');
+   
+    //Populate and create list of tasks
 
       const taskCards = document.getElementById('task-cards');
-      fetch('https://rest-api-flask-python-fullcircle.onrender.com/tasks')
+
+      const headers = new Headers();
+      headers.append('Authorization', 'Bearer ' + accessToken);
+
+
+      fetch('https://rest-api-flask-python-fullcircle.onrender.com/tasks', {
+        headers: headers
+      })
+      
+      // Returns data from api
       .then(response => response.json())
       .then(data => {
       let card = data;
+      console.log(card);
+      let dueDate = new Date(Date.parse(card.DueDate));
+      console.log(`Parsed due date: ${dueDate}`);
+
+
       const displayCards = (card) => {
         taskCards.innerHTML = ``;
 
+        // Creates a card for each task
         card.forEach((card) => {
           const newCard = document.createElement('div');
           newCard.classList.add('task-card', 'w-100');
@@ -112,10 +120,45 @@ const selectedCourse = document.querySelector('.selected-course');
         icon.addEventListener('click', function() {
           console.log('button was clicked');
     });
+
+    const time = newCard.querySelector('.time-remaining');
+        icon.addEventListener('click', function() {
+          console.log('play button was clicked');
+    });
           
         });
       };
       displayCards(card)
+
+      // Filter tasks based on the selected course
+      courseDropdown.addEventListener('click', (event) => {
+      if (event.target.classList.contains('dropdown-item')) {
+      const selectedCourse = event.target.dataset.Course;
+      const filteredTasks = selectedCourse === 'All Courses' ? card : card.filter(card => card.Courses === selectedCourse);
+      document.querySelector('.selected-course').textContent = selectedCourse;
+      displayCards(filteredTasks);
+    }
+  });
+
+      const courses = new Set(card.map(card => card.Courses)); // Use a Set to get unique course names
+      console.log(courses);
+      //this will place course names in the dropdown menu
+      courses.forEach(Course => {
+      const courseItem = document.createElement('li');
+      const courseLink = document.createElement('a');
+      courseLink.classList.add('dropdown-item');
+      courseLink.href = '#';
+      courseLink.dataset.Course = Course;
+      courseLink.textContent = Course;
+      courseItem.appendChild(courseLink);
+      courseMenu.appendChild(courseItem);
+      
+      courseLink.addEventListener('click', (event) => {
+      selectedCourse.textContent = event.target.dataset.Course;
+      });
+    });
+
+
     })
 
 
@@ -179,8 +222,8 @@ fetch('https://rest-api-flask-python-fullcircle.onrender.com/tasks', {
     displayTasks(tasks);
 
     // Filter tasks based on the selected course
-courseDropdown.addEventListener('click', (event) => {
-  if (event.target.classList.contains('dropdown-item')) {
+    courseDropdown.addEventListener('click', (event) => {
+    if (event.target.classList.contains('dropdown-item')) {
     const selectedCourse = event.target.dataset.course;
     const filteredTasks = selectedCourse === 'All Courses' ? tasks : tasks.filter(task => task.Courses === selectedCourse);
     document.querySelector('.selected-course').textContent = selectedCourse;
@@ -210,29 +253,29 @@ const courses = new Set(tasks.map(task => task.Courses)); // Use a Set to get un
   .catch(error => console.error(error));
 
 */
-/*
+
   // Select the class for a task
 const classDropdown = document.getElementById('task-class');
 
 
-fetch('https://rest-api-flask-python-fullcircle.onrender.com/tasks', {
+fetch('https://rest-api-flask-python-fullcircle.onrender.com/courses', {
   headers: headers
 })
     .then(response => response.json())
     .then(data => {
 
-      console.log(data)
-    const classes = new Set(data.map(item => item.Courses)); // Use a Set to get unique class names
+    const classes = new Set(data.map(item => item.name)); // Use a Set to get unique class names
+    const codes = new Set(data.map(item => item.code));
     console.log(classes);
 
-    classes.forEach(classe => {
+    classes.forEach(classes => {
       const classOption = document.createElement('option');
-      classOption.value = classe;
-      classOption.textContent = classe;
+      classOption.value = codes;
+      classOption.textContent = classes;
       classDropdown.appendChild(classOption);
     });
   })
-  .catch(error => console.error(error)); */
+  .catch(error => console.error(error)); 
 
 
   //Get dates

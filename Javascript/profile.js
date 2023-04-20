@@ -1,12 +1,17 @@
+const Store = require('electron-store');
+const store = new Store();
+
+const accessToken = store.get('access_token');
+const refreshToken = store.get('refresh_token');
+
+
+
 const profContainer = document.getElementById('class-list');
 
 
 
-const email = 'group@gmail.com';
-const password = 'password';
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6dHJ1ZSwiaWF0IjoxNjgxODg5MjE1LCJqdGkiOiIxOTI0MzEwYy03YmIzLTQ3NzUtYTdjZC1kOTM4ZDJmODYxOWYiLCJ0eXBlIjoiYWNjZXNzIiwic3ViIjoxLCJuYmYiOjE2ODE4ODkyMTUsImV4cCI6MTY4MTg5MDExNX0.4O8Vhk1sapfRkZtPeyY_gLIvqQ8A77DGpwAfucftQOg';
 const headers = new Headers();
-headers.append('Authorization', 'Basic ' + btoa(email + ':' + password) + ', Bearer ' + token);
+headers.append('Authorization', 'Bearer ' + accessToken);
 
 fetch('https://rest-api-flask-python-fullcircle.onrender.com/courses', {
 headers: headers

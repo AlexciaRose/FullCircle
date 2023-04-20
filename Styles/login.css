@@ -176,7 +176,7 @@ form h1 span{
         height: 50px;
         border-radius: 50%;
         border: 5px solid rgba(0, 0, 0, 0.1);
-        border-top-color: #09f;
+        border-top-color: rgb(238, 241, 243);
         animation: spin 1s ease-in-out infinite;
       }
       
