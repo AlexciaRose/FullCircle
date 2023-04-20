@@ -7,8 +7,8 @@
     <title>FullCircle - Dashboard</title>
     
     <!--CSS links-->
-    <link rel="stylesheet" href="dashboard.css"> <!--change to match folders-->
-    <link rel="stylesheet" href="sidenav.css"> <!--change to match folders-->
+    <link rel="stylesheet" href="./Styles/dashboard.css"> <!--change to match folders-->
+    <link rel="stylesheet" href="./Styles/sidenav.css"> <!--change to match folders-->
 
     <!--bootstrap 5 css file-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -29,28 +29,18 @@
 
     <header class="header" id="headerId">
       <div class="header_toggle"> <i class="fa-solid fa-angle-right" style="color: #4723D9;" id="toggleId"></i> </div>
+      <div class="header_img"> <img src="" alt=""> </div>
       <div id="welcomeMessage"></div>
       <div id="welcomeUser"><p>Welcome!</p></div>
-      <!--<i class="fa-solid fa-user"> 
-        <style>
-          .fa-user{
-            font-size: 25px;
-            padding-right: -90px;
-          }
-        </style>
-      </i>-->
-      <div class="header_img"> <img src="" alt=""> </div>
-    </header>
-
-  <!--Side Navbar-->
+  </header>
   <div class="l-navbar" id="navId">
       <nav class="nav">
           <div> <a href="#" class="nav_logo"> <i class="fa-solid fa-circle-notch fa-rotate-90 fa-lg" style="color: #fcfcfc;"></i> <span class="nav_logo-name">FullCircle</span> </a>
               <div class="nav_list"> 
                   <a href="dashboard.html" class="nav_link active"> <i class="fa-solid fa-boxes-stacked" style="color: #e6e6e6;"></i> <span class="nav_name">Dashboard</span> </a> 
                   <a href="tasks.html" class="nav_link"> <i class="fa-solid fa-folder" style="color: #e6e6e6;"></i> <span class="nav_name">Tasks</span> </a> 
-                  <a href="" class="nav_link"> <i class="fa-solid fa-calendar" style="color: #e6e6e6;"></i> <span class="nav_name">Schedule</span> </a> 
-                  <a href="#" class="nav_link"> <i class="fa-solid fa-user" style="color: #e6e6e6;"></i> <span class="nav_name">Profile</span> </a> 
+                  <a href="calendar.html" class="nav_link"> <i class="fa-solid fa-calendar" style="color: #e6e6e6;"></i> <span class="nav_name">Schedule</span> </a> 
+                  <a href="profile.html" class="nav_link"> <i class="fa-solid fa-user" style="color: #e6e6e6;"></i> <span class="nav_name">Profile</span> </a> 
                 
               </div>
           </div> <a href="#" class="nav_link"> <i class="fa-solid fa-right-from-bracket" style="color: #e8e8e8;"></i> <span class="nav_name">Logout</span> </a>
@@ -144,8 +134,8 @@
       </div>
       
   
-    <script src="sidenav.js"></script>
-    <script src="dashboard.js"></script>
+    <script src="Javascript/sidenav.js"></script>
+    <script src="Javascript/dashboard.js"></script>
 
 <!-- change to the above two lines to:
     <script src="Javascript/sidenav.js"></script>

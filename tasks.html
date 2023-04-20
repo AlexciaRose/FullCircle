@@ -41,7 +41,7 @@
     <!--Container Main start-->
    
     <div class="vh-100 row">
-        <div class="taskbar col-9">
+        <div class="taskbar col-lg-9 col-md-12">
             <div class="row d-flex align-items-center">
                 <h1 class="col-9">Tasks</h1>
                 <div class="btn-group col-3">
@@ -95,30 +95,7 @@
                   <div class="task-due-date">Due Date</div>
                   <div class="task-time-remaining">Time Remaining</div>
                 </div>
-                <div class="task-cards w-100" id="task-cards">
-       <!--  <div class="task-card w-100">
-                 <span class="icon" ></span> <div class="title">Mathematics Homework</div>
-                    <div class="status"> <div class="stat">
-                      Incomplete
-                    </div></div>
-                    <div class="prog">
-                      <progress value="25" max="100"></progress>
-                    </div>
-                    <div class="due-date">2023-04-30</div>
-                    <div class="time-remaining">08:05 </div>
-                  </div>
-
-                  <div class="task-card w-100">
-                  <span class="icon"></span>  <div class="title">Task Title</div>
-                      <div class="status"> <div class="stat">
-                        Incomplete
-                      </div></div>
-                      <div class="prog">
-                        <progress value="25" max="100"></progress>
-                      </div>
-                      <div class="due-date">2023-04-30</div>
-                      <div class="time-remaining">08:05 </div>
-                    </div>-->       
+                <div class="task-cards w-100" id="task-cards">    
                 
               </div>
             </div>
@@ -129,41 +106,6 @@
 
 
 
-<!--
- <div class="mt-5" id="task-container">
-                <div class="task" style=" border-color: #23d99f; border-left: 5px #23d99f;">
-                    <div class="flex-row d-flex align-items-center justify-content-between">
-                      <i class="fa-solid fa-circle-play fa-xl p-2" style="color: #ccd0d7;"></i>
-                        <h4 class="ms-n3">Biology Essay</h4>
-                        <button type="button" class="btn btn-sm btn-light drop-class menu dropdown-toggle-split justify-self-right" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fa-solid fa-ellipsis-vertical fa-lg m-auto" style="color: #676767;"></i>
-                        </button>                      
-                        <ul class="dropdown-menu ">
-                            <li><a class="dropdown-item" href="#">Edit</a></li>
-                            <li><a class="dropdown-item" href="#">Delete</a></li>
-                        </ul>
-                        
-                    </div>
-                    <div>
-                        <p class="ms-5 me-4 mt-lg-2 mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, accusamus sequatur dolorem dolorum voluptatum laboriosam...</p>
-                    </div>
-                    <div class="flex-row d-flex align-items-center">
-                        
-                    <i class="fa-regular fa-circle-check fa-xl p-2" style="color: #ccd0d7;"></i>
-                        <progress class="ms-4 me-4" value="25" max="100"></progress> <span class="me-5 pe-5">25% complete</span>
-                        
-                            <ul class="list-inline ms-5 align-self-center">
-                                <li class="list-inline-item className" style=" background-color: #23d99f;" id="className">Principles of Biology</li>
-                                <li class="list-inline-item dueDate" id="dueDate"> <i class="fa-solid fa-calendar me-2" style="color: #a3a3a3;"></i> Friday</li>
-                                <li class="list-inline-item status" id="status">On Time</li>
-                              </ul>
-                    </div>
-                     
-                </div>
-
-            </div>
--->
-
 <div class="mt-5" id="task-container">
 
 </div>
@@ -173,7 +115,7 @@
 
 
 
-         <!-- Modal -->
+         <!-- Modal to accept form data on a task-->
   <div class="modal fade vw-100" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -182,35 +124,32 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form>
+          <!--FORM-->
+          <form id="tasks-form" method="post">
             <div class="mb-3">
               <label for="task-name" class="col-form-label"></label>
-              <input type="text" class="form-control" id="task-name" placeholder="Add Title">
+              <input type="text" class="form-control" name="TaskName" id="TaskName" placeholder="Add Title">
             </div>
             <div class="mb-3">
               <label for="task-class" class="form-label mb-0">Class</label>
-                  <select id="task-class" name="task-class[]" class="form-select" type="text">
+                  <select id="task-class" name="Courses" class="form-select" type="text">
                       <option></option>
                   </select>
             </div>
             <div class="mb-3">
               <label for="due-date" class="col-form-label">Due Date:</label>
               <div class="row d-flex p-2">
-                <input type="date" class="form-control col p-2" id="due-date">
-              <input type="time" id="due-time" class="form-control col" style="width: 50px;" name="due-time[]">
+                <input type="date" class="form-control col p-2" name="DueDate" id="due-date">
+              <input type="time" id="due-time" class="form-control col" style="width: 50px;" name="DueTime">
               </div>
               <div class="mb-3">
               <label for="time-remaining" class="col-form-label">Time to Complete:</label>
               <fieldset>
                 <div class="row" style="font-weight: lighter;">
                   <div class="col">
-                     <input class="form-control col" id="hours" type="number" min="0" max="23" placeholder="00" value=0 >
+                     <input class="form-control col" name="AllottedTime" id="hours" type="number" min="0" max="23" placeholder="00" value=0 >
                 <label for="hours" class="col-form-label">Hours</label>
                   </div>
-               <div class="col"> 
-                <input class="form-control col" id="minutes" type="number" min="0" max="59" placeholder="00" value=0 >              
-                <label for="minutes" class="col-form-label">Minutes</label>
-              </div>
             </div>                 
              </fieldset>	  
         
@@ -218,54 +157,32 @@
             </div>
             <div class="mb-3">
               <label for="task-description" class="col-form-label"></label>
-              <textarea class="form-control" id="task-description" placeholder="Add description..."></textarea>
+              <textarea class="form-control" name="description" id="task-description" placeholder="Add description..."></textarea>
             </div>
            
-            
-          </form>
-        </div>
+            </div>
         <div class="modal-footer">
+          <input type="submit" class="btn btn-primary" value="Save Changes">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
         </div>
+          </form>
+        
       </div>
     </div>
   </div>
 
         <div class="col d-flex flex-column">
             
-            <div class="recs">
+            <div class="recs col-md-12">
                 <p>Here are some suggestions for </p>
                 <h2 style="font-weight: bold;">Today, <span id="date" style="color: rgba(24, 160, 251, 0.5);"></span></h2>
-                <div class="inner_recs card" id="inner_recs">
-                  
-      <!--<div class="card-body">
-                            <div class="flex-row d-flex align-items-center justify-content-between">
-                                <h5 class="card-title">Mathematics Homework</h5>
-                                <i class="fa-solid fa-circle-play fa-lg" style="color: #4723D9;"></i>
-                            </div>
-                          <h6 class="card-subtitle mb-2 text-body-secondary">2pm - 3pm</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="flex-row d-flex align-items-center justify-content-between">
-                                <h5 class="card-title">English Essay</h5>
-                                <i class="fa-solid fa-circle-play fa-lg" style="color: #4723D9;"></i>
-                            </div>
-                          <h6 class="card-subtitle mb-2 text-body-secondary">4pm - 5pm</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="flex-row d-flex align-items-center justify-content-between">
-                                <h5 class="card-title">Biology Q&A</h5>
-                                <i class="fa-solid fa-circle-play fa-lg" style="color: #4723D9;"></i>
-                            </div>
-                          <h6 class="card-subtitle mb-2 text-body-secondary">7pm - 8pm</h6>
-                        </div>-->                  
+                <div class="inner_recs card" id="inner_recs">               
                       
                 </div>
             </div>
             <div class="timer">
                 <h4>Time Tracker</h4>
-                <p>You can start tracking...</p>
+                <p class="track">You can start tracking...</p>
                 <div class="wrapper">
                     <div class="time">
                       <span class="hour">00</span>

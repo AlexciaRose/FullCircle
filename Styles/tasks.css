@@ -20,9 +20,8 @@ body{
 
 /*Area to display recommendations*/
 .recs{
-    height: 200px; 
     background-color: white;
-    height: 55%;
+    height: auto;
     margin-top: 10%;
     margin-right: 3%;
     margin-left: 3%;

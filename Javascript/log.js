@@ -1,5 +1,4 @@
 
-console.log('JavaScript file is being loaded');
 const { ipcRenderer } = require('electron');
 
 const loginForm = document.getElementById('login-form');

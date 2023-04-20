@@ -20,10 +20,29 @@ resetBtn.addEventListener("click", reset);
 
 let startTime = null;
 let elapsedTime = 0;
+let activeTaskId = null;
 
-function start() {
+
+//starts timer
+function start(event) {
+  reset();
+  const head = document.querySelector('.track');
+  head.textContent = "You can start tracking...";
   startBtn.classList.add("active");
   stopBtn.classList.remove("stopActive");
+  const clickedCard = event.target.closest('.task-card');
+
+  let taskId = '';
+  let taskName = '';
+  if (clickedCard) {
+    taskId = clickedCard.dataset.id;
+    taskName = clickedCard.querySelector('.title').textContent;
+    const track = document.querySelector('.track');
+    track.textContent = taskName;
+    activeTaskId = taskId;
+    console.log(taskId);
+  }
+
   startTime = Date.now() - elapsedTime;
   startTimer = setInterval(()=>{
     elapsedTime = Date.now() - startTime;
@@ -41,12 +60,49 @@ function start() {
   },10); //1000ms = 1s
 }
 
+/* Stops the button
+  Will only send data to api if a taskid is set */
+
 function stop() {
   startBtn.classList.remove("active");
   stopBtn.classList.add("stopActive");
   clearInterval(startTimer);
   elapsedTime = Date.now() - startTime;
+  elapsedMinutes = Math.floor(elapsedTime / 60000);  //converts time to minutes
+  
+  console.log(elapsedMinutes);
+  
+  
+  if(activeTaskId){
+    const headers = new Headers();
+    headers.append('Authorization', 'Bearer ' + accessToken);
+    headers.append('Content-Type', 'application/json');
+    console.log(activeTaskId);
+    const sendID = activeTaskId;
+    fetch(`https://rest-api-flask-python-fullcircle.onrender.com/time/${activeTaskId}`, { //url for put
+      method: 'PUT',
+      headers: headers,
+      body: JSON.stringify({ ElapsedTime: elapsedMinutes})
+    })
+
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log('Elapsed time sent successfully:', data);
+    })
+    .catch(error => {
+      console.error('Error sending elapsed time:', error);
+    });
+
+  }
+
 }
+
+
 
 function reset() {
   startBtn.classList.remove("active");
@@ -63,6 +119,52 @@ function putValue() {
   document.querySelector(".minute").innerText = min;
   document.querySelector(".hour").innerText = hr;
 }
+
+
+const taskForm = document.getElementById('tasks-form');
+
+const taskmodal = new bootstrap.Modal(document.getElementById('exampleModal'));
+
+taskForm.addEventListener('submit', function (event) {
+  event.preventDefault();
+  
+
+  const formData = new FormData(taskForm);
+
+  // Build the data object from the form data
+  const data = {};
+  formData.forEach((value, key) => {
+    data[key] = value;
+  });
+
+  const taskHeaders = new Headers();
+  taskHeaders.append('Authorization', 'Bearer ' + accessToken);
+  taskHeaders.append('Content-Type', 'application/json');
+
+  fetch('https://rest-api-flask-python-fullcircle.onrender.com/tasks', {
+    method: 'POST',
+    headers: taskHeaders,
+    body: JSON.stringify(data),
+  })
+  
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      taskmodal.hide();
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((error) => {
+      console.error('There was a problem with the fetch operation:', error);
+      console.log(data);
+    });
+});
+
+
+
 
 
 
@@ -101,34 +203,35 @@ const courseDropdown = document.querySelector('.btn-group .dropdown-menu');
         card.forEach((card) => {
           const newCard = document.createElement('div');
           newCard.classList.add('task-card', 'w-100');
+          console.log(card.id);
+          newCard.setAttribute('data-id', card.id);
             newCard.innerHTML=` 
                                   <span class="icon" ></span><div class="title">${card.TaskName}</div>
                                     <div class="status"><div class="stat">
                                     behind
                                     </div></div>
                                     <div class="prog">
-                                      <progress value="25" max="100"></progress>
+                                      <progress value="${card.Progress}" max="100"></progress>
                                     </div>
                                     <div class="due-date">${card.DueDate}</div>
-                                    <div class="time-remaining">08:05 </div>
+                                    <div class="time-remaining">${card.remaining_time}</div>
                                   `;
 
           taskCards.appendChild(newCard);
 
 
           const icon = newCard.querySelector('.icon');
-        icon.addEventListener('click', function() {
+          icon.addEventListener('click', function() {
           console.log('button was clicked');
     });
 
     const time = newCard.querySelector('.time-remaining');
-        icon.addEventListener('click', function() {
-          console.log('play button was clicked');
-    });
+        time.addEventListener("click", start);
           
         });
       };
       displayCards(card)
+      
 
       // Filter tasks based on the selected course
       courseDropdown.addEventListener('click', (event) => {
@@ -254,7 +357,7 @@ const courses = new Set(tasks.map(task => task.Courses)); // Use a Set to get un
 
 */
 
-  // Select the class for a task
+  // Select the class for a task (modal form)
 const classDropdown = document.getElementById('task-class');
 
 
@@ -270,7 +373,7 @@ fetch('https://rest-api-flask-python-fullcircle.onrender.com/courses', {
 
     classes.forEach(classes => {
       const classOption = document.createElement('option');
-      classOption.value = codes;
+      classOption.value = classes;
       classOption.textContent = classes;
       classDropdown.appendChild(classOption);
     });
@@ -298,7 +401,6 @@ fetch('https://rest-api-flask-python-fullcircle.onrender.com/courses', {
   console.log(`${year}-${month}-${day} ${hours}:${minutes}:${seconds}`);
 
 
-  
   
   
   

@@ -16,17 +16,29 @@
   }
 */
 
+const Store = require('electron-store');
+const store = new Store();
+
+const accessToken = store.get('access_token');
+const refreshToken = store.get('refresh_token');
+
+//CIRCULAR PROGRESS BAR
 let circularProgress = document.querySelector(".circular-progress"),
     progressValue = document.querySelector(".progress-value");
 
-let progressStartValue = 0,
-    progressEndValue = 90, //fix this with dummy data function 
+    const userTasks = {
+      completedTasks: 5,
+      totalTasks: 10
+    };
+
+    let progressStartValue = 0,
+    progressEndValue = (userTasks.completedTasks / userTasks.totalTasks) * 100; //fix this with dummy data function 
     speed = 25;
 
 let progress = setInterval(() => {
   progressStartValue++;
 
-  progressValue.textContent = `${progressStartValue}%`
+  progressValue.textContent = `${progressStartValue}%` //pull from api 
   circularProgress.style.background = `conic-gradient(#3065A9 ${progressStartValue * 3.6}deg, #ededed 0deg)`
 
   if(progressStartValue == progressEndValue){
@@ -35,25 +47,47 @@ let progress = setInterval(() => {
   
 }, speed);
 
-
-
 const progressBarFill = document.querySelector('.progress-bar');
 
-function updateProgressBar(progressPercentage) {
-  progressBarFill.style.width = 80 + '%';
+/*
+//USER DATA + WELCOME MESSAGE
+const user = {
+  name: 'John Doe', //tester data 
+  email: 'johndoe@example.com', //tester data
+  tasks_completed: 12,
+  incomplete_tasks: [
+    { id: 1, name: 'Task 1', progress: 50 },
+    { id: 2, name: 'Task 2', progress: 25 },
+    { id: 3, name: 'Task 3', progress: 75 }
+  ]
+};
 
-}
+document.getElementById('welcomeUser').innerHTML = `<p>Welcome, ${user.name}!</p>`;
+document.getElementById('taskCompleted').innerHTML = user.tasks_completed;
+document.getElementById('incompleteTasks').innerHTML = user.incomplete_tasks.length;
+
+const taskList = document.getElementById('taskList');
+user.incomplete_tasks.forEach(task => {
+  const listItem = document.createElement('li');
+  listItem.innerHTML = `${task.name}: ${task.progress}%`;
+  taskList.appendChild(listItem);
+}); */
+
 
 
 
 const incomplete = document.querySelector('.progress-container');
+const headers = new Headers();
+      headers.append('Authorization', 'Bearer ' + accessToken);
 
-fetch('Data/dashboard.json')
+fetch('https://rest-api-flask-python-fullcircle.onrender.com/tasks', {
+  headers: headers
+})
 
 .then(response => response.json())
 .then(data => {
   
-  let inclTasks = data.tasks;
+  let inclTasks = data;
 
 
   const displayinclTasks = (inclTasks) => {
@@ -64,7 +98,7 @@ fetch('Data/dashboard.json')
     const newincl = document.createElement('div');
     
           newincl.innerHTML =`<i class="fa-solid fa-circle"></i>
-                                  <p id="task-1">${inclTask.title}
+                                  <p id="task-1">${inclTask.TaskName}
                                     <style>
                                       #task-1{
                                         margin-left: 30px;
@@ -72,7 +106,7 @@ fetch('Data/dashboard.json')
                                       }
                                     </style>
                                     <div class="">
-                                      <progress value="${inclTask.progress}" max="100" min="0"></progress><span style="color: black;">${inclTask.progress}%</span>
+                                      <progress value="${inclTask.Progress}" max="100" min="0"></progress><span style="color: black;">${inclTask.Progress}%</span>
                                     </div>
                                   </p>`; 
             incomplete.appendChild(newincl);
@@ -88,3 +122,18 @@ fetch('Data/dashboard.json')
 });
 
 
+// sticky note
+const stickyNote = document.querySelector('.sticky-note');
+const closeButton = stickyNote.querySelector('.sticky-note-close');
+
+closeButton.addEventListener('click', () => {
+  stickyNote.style.display = 'none';
+});
+
+const textArea = stickyNote.querySelector('.sticky-note-text');
+
+textArea.addEventListener('input', () => {
+  const text = textArea.value;
+});
+
+textArea.value = localStorage.getItem('stickyNoteText') || '';
