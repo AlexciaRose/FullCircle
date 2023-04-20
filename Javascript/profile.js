@@ -33,5 +33,40 @@ displayClasses(classes);
 
   });
 
+//testing chart 
+var chartData = {
+  labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+  datasets: [{
+      label: 'Course Schedule',
+      data: [3, 2, 4, 1, 5],
+      backgroundColor: 'rgba(255, 99, 132, 0.2)',
+      borderColor: 'rgba(255, 99, 132, 1)',
+      borderWidth: 1
+  },
+  {
+      label: 'Tasks',
+      data: [2, 1, 3, 2, 4],
+      backgroundColor: 'rgba(54, 162, 235, 0.2)',
+      borderColor: 'rgba(54, 162, 235, 1)',
+      borderWidth: 1
+  }]
+};
 
+// Get the chart canvas element
+var chartCanvas = document.getElementById('myChart');
+
+// Create the chart object
+var chart = new Chart(chartCanvas, {
+  type: 'bar',
+  data: chartData,
+  options: {
+      scales: {
+          yAxes: [{
+              ticks: {
+                  beginAtZero: true
+              }
+          }]
+      }
+  }
+});
   
