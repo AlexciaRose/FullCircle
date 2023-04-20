@@ -193,7 +193,13 @@ a{
     background-color: #bcc0bc;
   }
 
-
+  .list-group-item {
+    cursor: pointer;
+  }
+  
+  .list-group-item:hover {
+    background-color: #f0f0f0;
+  }
 
 .flex-container {
     display: flex;
@@ -211,7 +217,11 @@ a{
     box-shadow: 5px 10px rgb(57, 50, 205);
     width:400px;
   }
-  
+  #exampleModal{
+    width:100%;
+    background-color: #666c67;
+    
+  }
   
   /* Responsive layout - makes a one column-layout instead of two-column layout */
   @media (max-width: 800px) {
@@ -222,4 +232,20 @@ a{
 .card{
     box-shadow: 5px 10px rgb(57, 50, 205);
 
+}
+.btn-field{
+    width: 100%;
+    display:flex;
+    justify-content: space-between;
+}
+.btn-field button{
+    flex-basis:48%;
+    background: #3c00a0;
+    color: #fff;
+    height: 40px;
+    border-radius:20px;
+    border: 0;
+    outline:0;
+    cursor:pointer;
+    transition:background 1s;
 }
