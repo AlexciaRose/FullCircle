@@ -91,6 +91,27 @@ $(document).ready(function() {
     $('.avatar').attr('src', 'Images/' + selectedImage);
   });
 });
+/*Modal Section*/
+<script>
+  const form = document.querySelector('form');
+  
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    
+    const formData = new FormData(form);
+    
+    if (event.submitter.name === 'update') {
+      // Handle the update button click
+      // Send an AJAX request to update the user's profile data
+    } else if (event.submitter.name === 'changePassword') {
+      // Handle the delete password button click
+      // Send an AJAX request to delete the user's password
+    } else if (event.submitter.name === 'deleteProfile') {
+      // Handle the delete profile button click
+      // Send an AJAX request to delete the user's profile
+    }
+  });
+</script>
 
 
 /*  
