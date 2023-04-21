@@ -88,9 +88,16 @@
             <input type="text" name="name" placeholder="First name" required>
             <input type="text" name="name" placeholder="Last name" required>
             <input type="text" name="name" placeholder="Email" required>
-            <input type="text" name="name" placeholder="Password" required>
-            <button type="submit" value="submit">Update<br/>
-            <button type="submit" value="submit">Delete<br/>
+            <div class="d-grid gap-2 mb-3">
+              <button type="submit" class="btn btn-primary" name="update">Update</button>
+            </div>
+            <input type="text" name="name" placeholder="Old Password" required>
+            <input type="text" name="name" placeholder="New Password" required>
+            <div class="d-grid gap-2 mb-3">
+             <!-- <button type="submit" class="btn btn-primary" name="update">Update</button>-->
+              <button type="submit" class="btn btn-danger" name="changePassword">Change Password</button>
+              <button type="submit" class="btn btn-danger" name="deleteProfile">Delete Profile</button>
+            </div>
           </form>
         </div>
 
