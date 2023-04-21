@@ -1,10 +1,25 @@
+const Store = require('electron-store');
+const store = new Store();
+
+const accessToken = store.get('access_token');
+const refreshToken = store.get('refresh_token');
+
+
+
 const profContainer = document.getElementById('class-list');
 
 
-fetch('Data/profile.json')
+
+const headers = new Headers();
+headers.append('Authorization', 'Bearer ' + accessToken);
+
+fetch('https://rest-api-flask-python-fullcircle.onrender.com/courses', {
+headers: headers
+})
   .then(response => response.json())
   .then(data => {
-    let classes = data.classes;
+    
+    let classes = data;
   
 
     const displayClasses = (classes) => {
@@ -16,8 +31,8 @@ fetch('Data/profile.json')
       newClass.classList.add('col');
             newClass.innerHTML =`<div class="card">
                                 <div class="card-body">
-                                  <h5 class="card-title">${classe.title}</h5>
-                                  <p class="card-text">${classe.day1}, ${classe.time1} <br> ${classe.day2}, ${classe.time2} <br> ${classe.complete} complete
+                                  <h5 class="card-title">${classe.name}</h5>
+                                  <p class="card-text">${classe.day_of_week}, ${classe.start_time} - ${classe.end_time} <br> ${classe.code} <br> ${classe.instructor_name}
                                   </p>
                                 </div>
                               </div>`;

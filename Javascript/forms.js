@@ -1,4 +1,3 @@
-
 console.log('JavaScript file is being loaded');
 
 const { ipcRenderer } = require('electron');
@@ -97,50 +96,6 @@ createform.addEventListener('submit', (e) => {
 });
 
 
-
-// Sends login data to backend
-const loginForm = document.getElementById('login-form');
-
-loginForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  console.log('Redirecting');
-  
-
-  const loginData = new FormData(loginForm);
-
-  // Build the data object from the form data
-  const data = {};
-  loginData.forEach((value, key) => {
-    data[key] = value;
-  });
-
-  // Set the headers for the request
-  const headers = new Headers();
-  headers.append('Content-Type', 'application/json');
-
-  // Send the data to the server
-  fetch('https://rest-api-flask-python-fullcircle.onrender.com/login', {
-    method: 'POST',
-    headers: headers,
-    body: JSON.stringify(data)
-  })
-  .then((response) => {
-    if (response.ok) {
-      console.log('Response status:', response.status);
-      console.log('Login successful');
-
-      window.location.href = 'profile.html';
-      //ipcRenderer.send('form-submitted', data, 'profile.html');
-    } else {
-      throw new Error('Failed to log in');
-    }
-  })
-  .catch((error) => {
-    console.error(error);
-  });
-
-  window.location.href = 'profile.html';
-});
 
 
 document.addEventListener('DOMContentLoaded', () => {

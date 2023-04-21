@@ -167,3 +167,22 @@ form h1 span{
       .modal-content{
         width: 30vw;
       }
+
+      .spinner {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: 5px solid rgba(0, 0, 0, 0.1);
+        border-top-color: rgb(238, 241, 243);
+        animation: spin 1s ease-in-out infinite;
+      }
+      
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      
