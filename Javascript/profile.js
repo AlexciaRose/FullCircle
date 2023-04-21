@@ -69,6 +69,15 @@ var chart = new Chart(chartCanvas, {
       }
   }
 });
+/*Choosing profile picture*/
+$(document).ready(function() {
+  $('#avatar-selector').change(function() {
+    var selectedImage = $(this).val();
+    $('.avatar').attr('src', 'Images/' + selectedImage);
+  });
+});
+
+
 /*  
 // Update name
 document.getElementById('update-name').addEventListener('click', function() {
