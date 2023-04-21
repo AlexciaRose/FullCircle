@@ -4,7 +4,9 @@ const store = new Store();
 const accessToken = store.get('access_token');
 const refreshToken = store.get('refresh_token');
 
-
+const taskHeaders = new Headers();
+taskHeaders.append('Authorization', 'Bearer ' + accessToken);
+taskHeaders.append('Content-Type', 'application/json');
 
 
 let hr = min = sec = ms = "0" + 0,
@@ -103,7 +105,7 @@ function stop() {
 }
 
 
-
+//Resets the timer
 function reset() {
   startBtn.classList.remove("active");
   stopBtn.classList.remove("stopActive");
@@ -137,10 +139,6 @@ taskForm.addEventListener('submit', function (event) {
     data[key] = value;
   });
 
-  const taskHeaders = new Headers();
-  taskHeaders.append('Authorization', 'Bearer ' + accessToken);
-  taskHeaders.append('Content-Type', 'application/json');
-
   fetch('https://rest-api-flask-python-fullcircle.onrender.com/tasks', {
     method: 'POST',
     headers: taskHeaders,
@@ -163,25 +161,86 @@ taskForm.addEventListener('submit', function (event) {
     });
 });
 
+/*
+function deleteTask(event) {
+  const clickedCard = event.target.closest('.task-card');
+  let taskId = '';
+  if (clickedCard) {
+    taskId = clickedCard.dataset.id;
+    activeTaskId = taskId;
+    fetch(`https://rest-api-flask-python-fullcircle.onrender.com/tasks/${activeTaskId}`, {
+      method: 'DELETE',
+      headers: taskHeaders
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      // handle successful response
+    })
+    .catch(error => {
+      console.error('There was a problem with the fetch operation:', error);
+    });
+  };
+}
+
+*/
+
+//Function that allows users to click title to view task info 
+function addTitleListeners() {
+  const titleElements = document.querySelectorAll('.task-card .title');
+  const modalBody = document.getElementById('taskModal');
+  titleElements.forEach(titleElement => {
+    titleElement.addEventListener('click', function() {
+      let clickId = this.parentNode.dataset.id;
+      if (clickId){
+
+        // Fetch task data from API using taskId
+    fetch(`https://rest-api-flask-python-fullcircle.onrender.com/tasks/${clickId}`,
+    {
+      headers: headers
+    })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then((taskData) => {
+      // Populate modal with task data
+      modalBody.innerHTML = `
+        <h2>${taskData.TaskName}</h2>
+        <p>Due date: ${taskData.DueDate}</p>
+        <p>Description: ${taskData.description}</p>
+        <!-- Add more task data fields as necessary -->
+      `;
+      taskmodal.show(); // Show the modal
+    })
+    .catch((error) => {
+      console.error('There was a problem with the fetch operation:', error);
+    });
+}
+
+      })
+
+    });
+  }
 
 
 
 
-
-const courseMenu = document.querySelector('.course-menu');
 const selectedCourse = document.querySelector('.selected-course');
-
 
   
 const courseDropdown = document.querySelector('.btn-group .dropdown-menu');
    
-    //Populate and create list of tasks
+    
+//This code will populate and create list of tasks
 
       const taskCards = document.getElementById('task-cards');
-
+      
       const headers = new Headers();
       headers.append('Authorization', 'Bearer ' + accessToken);
-
 
       fetch('https://rest-api-flask-python-fullcircle.onrender.com/tasks', {
         headers: headers
@@ -192,8 +251,6 @@ const courseDropdown = document.querySelector('.btn-group .dropdown-menu');
       .then(data => {
       let card = data;
       console.log(card);
-      let dueDate = new Date(Date.parse(card.DueDate));
-      console.log(`Parsed due date: ${dueDate}`);
 
 
       const displayCards = (card) => {
@@ -208,30 +265,28 @@ const courseDropdown = document.querySelector('.btn-group .dropdown-menu');
             newCard.innerHTML=` 
                                   <span class="icon" ></span><div class="title">${card.TaskName}</div>
                                     <div class="status"><div class="stat">
-                                    behind
+                                    ${card.Status}
                                     </div></div>
                                     <div class="prog">
                                       <progress value="${card.Progress}" max="100"></progress>
                                     </div>
                                     <div class="due-date">${card.DueDate}</div>
-                                    <div class="time-remaining">${card.remaining_time}</div>
+                                    <div class="time-remaining">${card.remaining_time} mins</div>
                                   `;
-
+          
           taskCards.appendChild(newCard);
 
-
+          /*
           const icon = newCard.querySelector('.icon');
-          icon.addEventListener('click', function() {
-          console.log('button was clicked');
-    });
+          icon.addEventListener('click', deleteTask); */
 
-    const time = newCard.querySelector('.time-remaining');
+        const time = newCard.querySelector('.time-remaining');
         time.addEventListener("click", start);
           
         });
       };
       displayCards(card)
-      
+      addTitleListeners();
 
       // Filter tasks based on the selected course
       courseDropdown.addEventListener('click', (event) => {
@@ -243,6 +298,7 @@ const courseDropdown = document.querySelector('.btn-group .dropdown-menu');
     }
   });
 
+      const courseMenu = document.querySelector('.course-menu');
       const courses = new Set(card.map(card => card.Courses)); // Use a Set to get unique course names
       console.log(courses);
       //this will place course names in the dropdown menu
@@ -266,96 +322,9 @@ const courseDropdown = document.querySelector('.btn-group .dropdown-menu');
 
 
 
-/*
-// Populate tasks
-const taskContainer = document.getElementById('task-container');
-const courseDropdown = document.querySelector('.btn-group .dropdown-menu');
 
 
- const headers = new Headers();
- headers.append('Authorization', 'Bearer ' + accessToken);
 
-
-fetch('https://rest-api-flask-python-fullcircle.onrender.com/tasks', {
-  headers: headers
-})
-    .then(response => response.json())
-    .then(data => {
-      
-    let tasks = data;
-
-    // Function to display tasks
-    const displayTasks = (tasks) => {
-      taskContainer.innerHTML = '';
-
-      tasks.forEach((task) => {
-        const newTask = document.createElement('div');
-        newTask.innerHTML = `
-          <div class="task" style="border-color: blue;">
-            <div class="flex-row d-flex align-items-center justify-content-between">
-              <i class="fa-solid fa-circle-play fa-xl p-2" style="color: #ccd0d7;"></i>
-              <h4 class="ms-n3">${task.TaskName}</h4>
-              <button type="button" class="btn btn-sm btn-light drop-class menu dropdown-toggle-split justify-self-right" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fa-solid fa-ellipsis-vertical fa-lg m-auto" style="color: #676767;"></i>
-              </button>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Edit</a></li>
-                <li><a class="dropdown-item" href="#">Delete</a></li>
-              </ul>
-            </div>
-            <div>
-              <p class="ms-5 me-4 mt-lg-2 mb-4">${task.description}</p>
-            </div>
-            <div class="flex-row d-flex align-items-center">
-              <i class="fa-regular fa-circle-check fa-xl p-2" style="color: #ccd0d7;"></i>
-              <progress class="ms-4 me-4" value="${task.id}" max="100"></progress> <span class="me-5 pe-5">${task.id}% complete</span>
-              <ul class="list-inline ms-5 align-self-center">
-                <li class="list-inline-item className" style=" background-color: blue;" id="className">${task.Courses}</li>
-                <li class="list-inline-item dueDate" id="dueDate"> <i class="fa-solid fa-calendar me-2" style="color: #a3a3a3;"></i> ${task.DueDate}</li>
-                <li class="list-inline-item status" id="status">${task.DueTime}</li>
-              </ul>
-            </div>
-          </div>
-        `;
-        taskContainer.appendChild(newTask);
-      });
-    };
-
-    // Display all tasks by default
-    displayTasks(tasks);
-
-    // Filter tasks based on the selected course
-    courseDropdown.addEventListener('click', (event) => {
-    if (event.target.classList.contains('dropdown-item')) {
-    const selectedCourse = event.target.dataset.course;
-    const filteredTasks = selectedCourse === 'All Courses' ? tasks : tasks.filter(task => task.Courses === selectedCourse);
-    document.querySelector('.selected-course').textContent = selectedCourse;
-    displayTasks(filteredTasks);
-  }
-});
-
-const courses = new Set(tasks.map(task => task.Courses)); // Use a Set to get unique course names
-  console.log(courses);
-    courses.forEach(Course => {
-      const courseItem = document.createElement('li');
-      const courseLink = document.createElement('a');
-      courseLink.classList.add('dropdown-item');
-      courseLink.href = '#';
-      courseLink.dataset.Course = Course;
-      courseLink.textContent = Course;
-      courseItem.appendChild(courseLink);
-      courseMenu.appendChild(courseItem);
-      
-      courseLink.addEventListener('click', (event) => {
-      selectedCourse.textContent = event.target.dataset.Course;
-      });
-    });
-
-
-  })
-  .catch(error => console.error(error));
-
-*/
 
   // Select the class for a task (modal form)
 const classDropdown = document.getElementById('task-class');
@@ -379,6 +348,8 @@ fetch('https://rest-api-flask-python-fullcircle.onrender.com/courses', {
     });
   })
   .catch(error => console.error(error)); 
+
+
 
 
   //Get dates
@@ -409,24 +380,26 @@ fetch('https://rest-api-flask-python-fullcircle.onrender.com/courses', {
   const recsContainer = document.getElementById('inner_recs');
 
 
-   fetch('Data/task-info.json')
+  fetch('https://rest-api-flask-python-fullcircle.onrender.com/tasks', {
+    headers: headers
+  })
         .then(response => response.json())
         .then(data => {
-            let recs = data.tasks;
+            let recs = data;
         
             // Function to display tasks
             const displayRecs = (recs) => {
               recsContainer.innerHTML = '';
         
-              recs.forEach((task) => {
+              recs.forEach((recs) => {
                 const newRec = document.createElement('div');
                 newRec.classList.add('card-body');
                  newRec.innerHTML =`
                               <div class="flex-row d-flex align-items-center justify-content-between">
-                                  <h5 class="card-title">${task.title}</h5>
-                                  <i class="fa-solid fa-circle-play fa-lg" style="color: #4723D9;"></i>
+                                  <h5 class="card-title">${recs.TaskName}</h5>
+                                  
                               </div>
-                            <h6 class="card-subtitle mb-2 text-body-secondary">2pm - 3pm</h6>
+                            
                           `;
           recsContainer.appendChild(newRec);
               });
@@ -437,6 +410,10 @@ fetch('https://rest-api-flask-python-fullcircle.onrender.com/courses', {
         
             
           })
+
+
+
+
 
 
        

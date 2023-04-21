@@ -210,8 +210,8 @@ progress {
 }
 
 .stat{
-    background-color: rgba(48, 169, 82, 1);
-    color: white;
+    background-color: none;
+    color: black;
     padding: 5px;
     border-radius: 5px;
     font-size: 15px;
@@ -378,6 +378,10 @@ progress {
     padding-left: 5px;
   }
 
+  .title:hover {
+    text-decoration: underline;
+  }
+
   .icon{
     width: 0px;
   }
@@ -402,6 +406,10 @@ progress {
   .due-date {
     flex-basis: 40%;
     text-align: center;
+    background-color: aquamarine;
+    border-radius: 5px;
+    font-size: 15px;
+    width: fit-content;
   }
 
   .prog {

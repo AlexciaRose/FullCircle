@@ -27,12 +27,12 @@ let circularProgress = document.querySelector(".circular-progress"),
     progressValue = document.querySelector(".progress-value");
 
     const userTasks = {
-      completedTasks: 5,
-      totalTasks: 10
-    };
+      completedTasks: 0,
+      totalTasks: 0
+    }; 
 
     let progressStartValue = 0,
-    progressEndValue = (userTasks.completedTasks / userTasks.totalTasks) * 100; //fix this with dummy data function 
+    progressEndValue = 1; //fix this with dummy data function 
     speed = 25;
 
 let progress = setInterval(() => {
