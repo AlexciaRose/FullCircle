@@ -84,6 +84,7 @@ var chart = new Chart(chartCanvas, {
       }
   }
 });
+<<<<<<< HEAD
 /*Choosing profile picture*/
 $(document).ready(function() {
   $('#avatar-selector').change(function() {
@@ -118,4 +119,6 @@ document.getElementById('delete-account').addEventListener('click', function() {
 
 
 */
+=======
+>>>>>>> f8a78c8d20b79123626701a562473e03a5a052c0
   
