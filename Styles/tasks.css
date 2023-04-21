@@ -380,6 +380,8 @@ progress {
 
   .title:hover {
     text-decoration: underline;
+    cursor: pointer;
+    font-weight: bolder;
   }
 
   .icon{
@@ -431,4 +433,29 @@ progress {
   position: relative;
   left: 50px;
   color: #4723D9;
+}
+
+.descbody  span {
+  display: inline-block;
+  width: 50%;
+}
+.descbody h4{
+  font-weight: lighter;
+  color: gray;
+  font-size: 18px;
+}
+
+.descbody p{
+  font-weight: lighter;
+}
+
+.due p{
+  font-weight: lighter;
+  display: inline;
+  margin-right: 10px;
+}
+
+.due h4{
+  display: inline;
+  margin-right: 10px;
 }

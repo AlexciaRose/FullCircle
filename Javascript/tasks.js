@@ -70,12 +70,11 @@ function stop() {
   stopBtn.classList.add("stopActive");
   clearInterval(startTimer);
   elapsedTime = Date.now() - startTime;
-  elapsedMinutes = Math.floor(elapsedTime / 60000);  //converts time to minutes
-  
-  console.log(elapsedMinutes);
-  
+  elapsedSeconds = elapsedTime / 1000;  //converts time to seconds
+  const isoDuration = new Date(elapsedSeconds * 1000).toISOString().substr(11, 12);
   
   if(activeTaskId){
+    console.log("this is the", isoDuration);
     const headers = new Headers();
     headers.append('Authorization', 'Bearer ' + accessToken);
     headers.append('Content-Type', 'application/json');
@@ -84,9 +83,8 @@ function stop() {
     fetch(`https://rest-api-flask-python-fullcircle.onrender.com/time/${activeTaskId}`, { //url for put
       method: 'PUT',
       headers: headers,
-      body: JSON.stringify({ ElapsedTime: elapsedMinutes})
+      body: JSON.stringify({ ElapsedTime: isoDuration})
     })
-
     .then(response => {
       if (!response.ok) {
         throw new Error('Network response was not ok');
@@ -99,7 +97,7 @@ function stop() {
     .catch(error => {
       console.error('Error sending elapsed time:', error);
     });
-
+    
   }
 
 }
@@ -189,7 +187,8 @@ function deleteTask(event) {
 //Function that allows users to click title to view task info 
 function addTitleListeners() {
   const titleElements = document.querySelectorAll('.task-card .title');
-  const modalBody = document.getElementById('taskModal');
+  const descmodal = new bootstrap.Modal(document.getElementById('taskModal'));
+  const modalBody = document.getElementById('descBody');
   titleElements.forEach(titleElement => {
     titleElement.addEventListener('click', function() {
       let clickId = this.parentNode.dataset.id;
@@ -208,13 +207,15 @@ function addTitleListeners() {
     })
     .then((taskData) => {
       // Populate modal with task data
+      console.log(taskData);
       modalBody.innerHTML = `
-        <h2>${taskData.TaskName}</h2>
-        <p>Due date: ${taskData.DueDate}</p>
-        <p>Description: ${taskData.description}</p>
-        <!-- Add more task data fields as necessary -->
+        <h2 class="mb-3">${taskData.TaskName}</h2>
+        <span class="due"><h4>Due Date:</h4><p>${taskData.DueDate}</p></span>
+        <span class="due"><h4>Due Time:</h4><p>${taskData.DueTime}</p></span>
+        <h4 style="margin-top: 2.5%;">Description:</h4>
+        <p>${taskData.description}</p>
       `;
-      taskmodal.show(); // Show the modal
+      descmodal.show(); // Show the modal
     })
     .catch((error) => {
       console.error('There was a problem with the fetch operation:', error);
@@ -231,7 +232,6 @@ function addTitleListeners() {
 
 const selectedCourse = document.querySelector('.selected-course');
 
-  
 const courseDropdown = document.querySelector('.btn-group .dropdown-menu');
    
     
@@ -247,7 +247,12 @@ const courseDropdown = document.querySelector('.btn-group .dropdown-menu');
       })
       
       // Returns data from api
-      .then(response => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
       .then(data => {
       let card = data;
       console.log(card);
@@ -261,7 +266,9 @@ const courseDropdown = document.querySelector('.btn-group .dropdown-menu');
           const newCard = document.createElement('div');
           newCard.classList.add('task-card', 'w-100');
           console.log(card.id);
+        
           newCard.setAttribute('data-id', card.id);
+
             newCard.innerHTML=` 
                                   <span class="icon" ></span><div class="title">${card.TaskName}</div>
                                     <div class="status"><div class="stat">
@@ -271,7 +278,7 @@ const courseDropdown = document.querySelector('.btn-group .dropdown-menu');
                                       <progress value="${card.Progress}" max="100"></progress>
                                     </div>
                                     <div class="due-date">${card.DueDate}</div>
-                                    <div class="time-remaining">${card.remaining_time} mins</div>
+                                    <div class="time-remaining">${card.remaining_time}</div>
                                   `;
           
           taskCards.appendChild(newCard);
@@ -336,8 +343,7 @@ fetch('https://rest-api-flask-python-fullcircle.onrender.com/courses', {
     .then(response => response.json())
     .then(data => {
 
-    const classes = new Set(data.map(item => item.name)); // Use a Set to get unique class names
-    const codes = new Set(data.map(item => item.code));
+    const classes = new Set(data.map(item => item.name));// Use a Set to get unique class names
     console.log(classes);
 
     classes.forEach(classes => {
