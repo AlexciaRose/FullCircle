@@ -71,7 +71,7 @@
             <div class="task-container mt-5">
                 <div class="task-header">
                  <div class="task-title">Title</div>
-                  <div class="task-status">Description</div>
+                  <div class="task-status">Completion</div>
                   <div class="task-progress">Progress</div>
                   <div class="task-due-date">Due Date</div>
                   <div class="task-time-remaining">Time Remaining</div>
@@ -183,7 +183,23 @@
     </div>
 
 
-    <div class="modal fade vw-100" id="taskModal" tabindex="-1" aria-hidden="true">
+    <div class="modal vw-100" id="taskModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Task Details</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body descbody" id="descBody">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" style="background-color: #089bfd; border:none;" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+
+
 
       </div>
 
