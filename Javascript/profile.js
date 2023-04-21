@@ -84,4 +84,41 @@ var chart = new Chart(chartCanvas, {
       }
   }
 });
+<<<<<<< HEAD
+/*Choosing profile picture*/
+$(document).ready(function() {
+  $('#avatar-selector').change(function() {
+    var selectedImage = $(this).val();
+    $('.avatar').attr('src', 'Images/' + selectedImage);
+  });
+});
+
+
+/*  
+// Update name
+document.getElementById('update-name').addEventListener('click', function() {
+  // Show form to update name
+  console.log('Update Name clicked');
+});
+
+// Update password
+document.getElementById('update-password').addEventListener('click', function() {
+  // Show form to update password
+  console.log('Update Password clicked');
+});
+
+// Delete account
+document.getElementById('delete-account').addEventListener('click', function() {
+  // Show confirmation dialog
+  var result = confirm("Are you sure you want to delete your account?");
+  if (result) {
+    console.log('Account deleted');
+  }
+});
+
+
+
+*/
+=======
+>>>>>>> f8a78c8d20b79123626701a562473e03a5a052c0
   

@@ -57,7 +57,15 @@
     </div>
     
         <!--Main body of information-->
-        <img src="Images/ava.jpg" alt="Avatar" class="avatar">
+        <div id="picpurpose">
+          <img src="Images/ava.jpg" alt="Avatar" class="avatar" id="avatar-image">
+          <select id="avatar-selector" onchange="changeAvatar()">
+             <option value="Images/ava.jpg">Default</option>
+             <option value="Images/male.png">Male Avatar</option>
+             <option value="Images/female.png">Female Avatar</option>
+          </select>
+       </div>
+       
         <center><h1>Profile</h1>
             <div class="dropdown">
                 <button class="dropbtn">Edit</button>
@@ -81,8 +89,8 @@
             <input type="text" name="name" placeholder="Last name" required>
             <input type="text" name="name" placeholder="Email" required>
             <input type="text" name="name" placeholder="Password" required>
-            <button type="submit" value="submit" class="btn-field">Update<br/>
-            <button type="submit" value="submit" class="btn-field">Delete<br/>
+            <button type="submit" value="submit">Update<br/>
+            <button type="submit" value="submit">Delete<br/>
           </form>
         </div>
 
@@ -133,5 +141,12 @@
 
     <script src="Javascript/profile.js"></script>
     <script src="Javascript/sidenav.js"></script>
+    <script>
+      function changeAvatar() {
+        var img = document.getElementById("avatar-image");
+        var select = document.getElementById("avatar-selector");
+        img.src = select.value;
+      }
+    </script>
 </body>
 </html>
