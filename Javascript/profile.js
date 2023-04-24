@@ -117,7 +117,7 @@ var chart = new Chart(chartCanvas, {
       }
   }
 });
-/*Choosing profile picture
+/*Choosing profile picture*/
 $(document).ready(function() {
   $('#avatar-selector').change(function() {
     var selectedImage = $(this).val();
@@ -162,7 +162,7 @@ $(document).ready(function() {
     modal.appendChild(message);
   }
 /*Connecting edit profile to the database*/
-/*
+
 // Get the modal
 const modal = document.getElementById("editModal");
     
