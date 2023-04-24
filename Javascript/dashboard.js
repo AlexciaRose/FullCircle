@@ -32,11 +32,10 @@ let circularProgress = document.querySelector(".circular-progress"),
     }; 
 
     let progressStartValue,
-    progressEndValue = 1; //fix this with dummy data function 
+    progressEndValue = 100; //fix this with dummy data function 
     speed = 25;
 
 let progress = setInterval(() => {
-  progressStartValue++;
 
   progressValue.textContent = `${progressStartValue}%` //pull from api 
   circularProgress.style.background = `conic-gradient(#3065A9 ${progressStartValue * 3.6}deg, #ededed 0deg)`
@@ -133,6 +132,7 @@ fetch ('https://rest-api-flask-python-fullcircle.onrender.com/task_stats',{
 
   let stats = data;
   progressStartValue = stats.recent_completed_percentage;
+  console.log(progressStartValue);
   
 
 });
@@ -155,3 +155,50 @@ textArea.value = localStorage.getItem('stickyNoteText') || '';
 
 
 
+
+
+const urgent = document.querySelector('.urgent-display');
+
+
+fetch('https://rest-api-flask-python-fullcircle.onrender.com/recommended', {
+  headers: headers
+})
+
+.then(response => response.json())
+.then(data => {
+  
+  let urgentTasks = data;
+  console.log(urgentTasks);
+
+
+  const displayurgentTasks = (urgentTasks) => {
+    urgent.innerHTML = '';
+
+   urgentTasks.forEach((urgentTask) => {
+
+    const newincl = document.createElement('div');
+    
+          newincl.innerHTML =`<i class="fa-solid fa-circle"></i>
+                                  <p id="task-1">${urgentTask.TaskName}
+                                    <style>
+                                      #task-1{
+                                        margin-left: 30px;
+                                        font-weight: 500;
+                                      }
+                                    </style>
+                                    <div class="">
+                                      <progress value="${urgentTask.Progress}" max="100" min="0"></progress><span style="color: black;">${urgentTask.Progress}%</span>
+                                    </div>
+                                  </p>`; 
+            incomplete.appendChild(newincl);
+
+});
+
+};
+if(urgentTasks){
+   displayurgentTasks();
+}
+
+   
+
+});

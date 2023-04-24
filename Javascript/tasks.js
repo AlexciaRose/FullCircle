@@ -429,7 +429,6 @@ function addCompleteListeners() {
   
   completeIcons.forEach(completeIcon => {
     completeIcon.addEventListener('click', function() {
-      console.log("help");
       let completeId = this.parentNode.dataset.id;
       console.log(completeId);
       if (completeId){

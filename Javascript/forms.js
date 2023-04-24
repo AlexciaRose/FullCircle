@@ -55,6 +55,7 @@ studentForm.addEventListener('submit', function(event) {
 
 });
 */
+
 const headers = new Headers();
 headers.append('Content-Type', 'application/json');
 
@@ -72,8 +73,6 @@ createform.addEventListener('submit', (e) => {
     data[key] = value;
   });
 
-  // Set the headers for the request
-  
 
   // Send the data to the server
   fetch('https://rest-api-flask-python-fullcircle.onrender.com/register', {
@@ -86,7 +85,7 @@ createform.addEventListener('submit', (e) => {
       console.log('Form data submitted successfully');
 
        // Trigger the form-submitted event to open the student window
-       ipcRenderer.send('form-submitted', data, 'student.html');
+       ipcRenderer.send('form-submitted', data, 'classes.html');
     } else {
       throw new Error('Failed to submit form');
     }
@@ -98,7 +97,7 @@ createform.addEventListener('submit', (e) => {
 
 
 
-
+/*
 document.addEventListener('DOMContentLoaded', () => {
   console.log('Content is loading');
   // Get references to the form-selects
@@ -123,8 +122,8 @@ document.addEventListener('DOMContentLoaded', () => {
     yearSelect.innerHTML = options.join('');
   });
 });
-
-
+*/
+/*
 // Send school data to backend
 const studentform = document.getElementById('student-form');
 
@@ -179,9 +178,9 @@ studentform.addEventListener('submit', (e) => {
 
 
 });
+*/
 
-
-
+/*
 // adds area for new class time
 const addClassTimeButton = document.getElementById('add-class-time');
 const classTimeContainer = document.getElementById('class-times');
@@ -223,7 +222,7 @@ addClassTimeButton.addEventListener('click', () => {
 
   classTimeContainer.appendChild(newClassTime);
 });
-
+*/
 /*
 // Creates new area to add another class
 const addClassButton = document.getElementById('add-class');
@@ -236,51 +235,6 @@ addClassButton.addEventListener('click', function() {
  
 }); */
 
-// Select the form element
-const classform = document.querySelector('#class-form');
-
-// Create an empty array to store the class data objects
-const classes = [];
-
-function createClassData() {
-
-  // Create a new FormData object and populate it with the form data
-  const classformData = new FormData(classform);
-
-  // Iterate over the length of the class-code[] values in the FormData object
-  for (let i = 0; i < classformData.getAll('class-code[]').length; i++) {
-    const classData = {
-      code: classformData.getAll('class-code[]')[i],
-      name: classformData.getAll('class-name[]')[i],
-      color: classformData.getAll('class-color[]')[i],
-      instructor: classformData.getAll('class-instructor[]')[i],
-      times: [],
-    };
-
-     // Iterate over the length of the class-day[] values in the FormData object
-    for (let j = 0; j < classformData.getAll('class-day[]').length; j++) {
-      if (i === Math.floor(j / 2)) {
-        classData.times.push({
-          day: classformData.getAll('class-day[]')[j],
-          startTime: classformData.getAll('start-time[]')[j],
-          endTime: classformData.getAll('end-time[]')[j],
-        });
-      }
-    }
-    classes.push(classData);
-
-    console.log(classes);
-  }
-}
-
-
-
-
-classform.addEventListener('submit', function(event) {
-  console.log('Form submitted!');
-  createClassData();
-  
-});
 
 
 
@@ -314,9 +268,8 @@ function addViewContent() {
 
 
 /*// Your code for the view.html page goes here
-    const viewcontainer = document.querySelector('.classes-container'); // Replace with your container element
-    viewcontainer.innerHTML = '<p>Hi</p>'; // Clear the existing content
-    // ...
+    
+
 for (let i = 0; i < classes.length; i++) {
   const classData = classes[i];
   const classCard = `

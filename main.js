@@ -33,7 +33,11 @@ const createWindow = () => {
     store.set('refresh_token', refreshToken);
   });
 
-
+  ipcMain.on('message-with-id', (event, editId) => {
+    store.set('course_id', editId);
+    console.log(`Received message with ID value: ${editId}`);
+    // Do something with the ID value, such as store it in a variable or database
+  });
 
 // Redirecting to other windows
 function createStudentWindow(pageName) {
