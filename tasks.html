@@ -18,7 +18,8 @@
 
     <title>Tasks</title>
 </head>
-<body  id="bodyId">
+<body  id="bodyId"
+>
     
     <header class="header" id="headerId">
         <div class="header_toggle"> <i class="fa-solid fa-angle-right" style="color: #4723D9;" id="toggleId"></i> </div>
@@ -61,8 +62,21 @@
                 <button type="button" class="btn btn-sm btn-light dropdown-toggle drop-class dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
                   <span class="visually-hidden">Toggle Dropdown</span>
                 </button>
-                <ul class="dropdown-menu course-menu">
-                  <li><a class="dropdown-item" href="#" data-course="All Courses">All Courses</a></li>
+                <ul class="dropdown-menu all-courses-menu course-menu">
+                  
+                </ul>
+              </div>
+
+              <div class="btn-group col-2">
+                <button class="btn btn-class btn-sm" style="color: black;" type="button">
+                  Show: <span class="task-filter" style="color: rgba(131, 134, 133, 1);">Ongoing Tasks</span>
+                </button>
+                <button type="button" class="btn btn-sm btn-light dropdown-toggle drop-class dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                  <span class="visually-hidden">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu task-filter-menu">
+                  <li><a class="dropdown-item ongoing" href="#" data-course="Ongoing Tasks">Ongoing Tasks</a></li>
+                  <li><a class="dropdown-item completed" href="#" data-course="Completed Tasks">Completed Tasks</a></li>
                 </ul>
               </div>
                
@@ -105,8 +119,8 @@
               <input type="text" class="form-control" name="TaskName" id="TaskName" placeholder="Add Title">
             </div>
             <div class="mb-3">
-              <label for="task-class" class="form-label mb-0">Class</label>
-                  <select id="task-class" name="Courses" class="form-select" type="text">
+              <label for="task-class" class="form-label mb-0">Course</label>
+                  <select id="task-class" name="Courses" class="form-select task-class" type="text">
                       <option></option>
                   </select>
             </div>
@@ -117,15 +131,16 @@
               <input type="time" id="due-time" class="form-control col" style="width: 50px;" name="DueTime">
               </div>
               <input type="hidden" value="" name="Status" id="">
-              <input type="hidden" value="" name="ElapsedTime" id="">
-              <input type="hidden" value="" name="Progress" id="">
-              <input type="hidden" value="0" name="remaining_time" id="">
+              <input type="hidden" value="00:00:00.000" name="ElapsedTime" id="">
+              <input type="hidden" value="0.0" name="Progress" id="">
+              <input type="hidden" value="0" name="remaining_time" id="">            
+              
               <div class="mb-3">
               <label for="time-remaining" class="col-form-label">Time to Complete:</label>
               <fieldset>
                 <div class="row" style="font-weight: lighter;">
                   <div class="col">
-                     <input class="form-control col" name="AllottedTime" id="hours" type="number" min="0" max="23" placeholder="00" value=0 >
+                     <input class="form-control col" name="AllottedTime" id="hours" type="number" min="0" max="23" placeholder="00" value=0 required>
                 <label for="hours" class="col-form-label">Hours</label>
                   </div>
             </div>                 
@@ -135,13 +150,13 @@
             </div>
             <div class="mb-3">
               <label for="task-description" class="col-form-label"></label>
-              <textarea class="form-control" name="description" id="task-description" placeholder="Add description..."></textarea>
+              <textarea class="form-control" name="description" maxlength="300" id="task-description" placeholder="Add description..."></textarea>
             </div>
            
             </div>
         <div class="modal-footer">
           <input type="submit" class="btn btn-primary" value="Save Changes">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary" style="background-color: #089bfd; border:none;" data-bs-dismiss="modal">Close</button>
         </div>
           </form>
         
@@ -155,7 +170,9 @@
                 <p>Here are some suggestions for </p>
                 <h2 style="font-weight: bold;">Today, <span id="date" style="color: rgba(24, 160, 251, 0.5);"></span></h2>
                 <div class="inner_recs card" id="inner_recs">               
-                      
+                  <div class="align-items-center"> 
+                    <h5 class="card-title">Keep Up the Good Work!</h5>                         
+                </div>
                 </div>
             </div>
             <!--TIMER - This will time each task and will also act as a general timer-->
@@ -183,7 +200,7 @@
     </div>
 
 
-    <div class="modal vw-100" id="taskModal" tabindex="-1" aria-hidden="true">
+    <div class="modal vw-100" id="editModal" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -193,9 +210,14 @@
           <div class="modal-body descbody" id="descBody">
             ...
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" style="background-color: #089bfd; border:none;" data-bs-dismiss="modal">Close</button>
+          <div class="modal-footer foot d-flex justify-content-between" id="footer">
+          <!---->  <div>
+              <button type="button" class="btn btn-light" style="background-color: #28a6f9; border:none;" id="editTask">Edit</button>
+              <button type="button" class="btn btn-light" >Delete</button>
+            </div>
+            <button type="button" class="btn btn-light"  data-bs-dismiss="modal">Close</button>
           </div>
+          
         </div>
       </div>
 
@@ -217,6 +239,9 @@
    <!--Local Javascript-->
     <script src="Javascript/sidenav.js"></script>
     <script src="Javascript/tasks.js"></script>
+    <script src="Javascript/submit.js"></script>
 
 </body>
 </html>
+
+

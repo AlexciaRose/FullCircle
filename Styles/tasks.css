@@ -79,6 +79,8 @@ h1{
     background-color: #4723D9;
 }
 
+
+
 .btn-group a{
     color: white;
     margin-top: 10px;
@@ -94,7 +96,10 @@ h1{
 }
 
 .dropdown-item{
-    max-width: 80px;
+  width: auto;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .dropdown-item:hover{
@@ -370,6 +375,19 @@ progress {
     border-bottom: 1px solid rgba(128, 128, 128, 0.491);
   }
 
+  .complete-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.491);
+  }
+
+.done-time{
+  flex-basis: 40%;
+  text-align: center;
+
+}
   
 
   .title {
@@ -437,12 +455,12 @@ progress {
 
 .descbody  span {
   display: inline-block;
-  width: 50%;
+  width: 70%;
 }
 .descbody h4{
   font-weight: lighter;
   color: gray;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .descbody p{
@@ -458,4 +476,21 @@ progress {
 .due h4{
   display: inline;
   margin-right: 10px;
+}
+
+.modal-dialog {
+  max-width: 600px;
+  margin: auto;
+}
+
+.foot .btn{
+  background-color: #dcdbdf;
+  border: none;
+}
+
+.fifty-chars {
+  width: auto;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
