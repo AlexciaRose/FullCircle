@@ -779,9 +779,6 @@ fetch('https://rest-api-flask-python-fullcircle.onrender.com/getcomplete', {
             displayRecs(recs);  
             }
 
-
-               
-        
             
           })
 

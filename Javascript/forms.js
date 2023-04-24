@@ -55,7 +55,8 @@ studentForm.addEventListener('submit', function(event) {
 
 });
 */
-
+const headers = new Headers();
+headers.append('Content-Type', 'application/json');
 
 // Send new account data to backend
 const createform = document.getElementById('create-account');
@@ -72,8 +73,7 @@ createform.addEventListener('submit', (e) => {
   });
 
   // Set the headers for the request
-  const headers = new Headers();
-  headers.append('Content-Type', 'application/json');
+  
 
   // Send the data to the server
   fetch('https://rest-api-flask-python-fullcircle.onrender.com/register', {
@@ -84,6 +84,7 @@ createform.addEventListener('submit', (e) => {
   .then((response) => {
     if (response.ok) {
       console.log('Form data submitted successfully');
+
        // Trigger the form-submitted event to open the student window
        ipcRenderer.send('form-submitted', data, 'student.html');
     } else {
@@ -123,30 +124,45 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-/*
+
 // Send school data to backend
 const studentform = document.getElementById('student-form');
 
 studentform.addEventListener('submit', (e) => {
   e.preventDefault();
 
-  const studentData = new FormData(createform);
+  const name = document.getElementById('name').value;
+  const program = document.getElementById('program').value;
+  const length = document.getElementById('program_length').value;
+  const current = document.getElementById('current_year').value;
+  const formdata = { name: name, program: program, program_length: length, current_year: current };
 
-  // Build the data object from the form data
-  const data = {};
-  studentData.forEach((value, key) => {
-    data[key] = value;
-  });
-
-  // Set the headers for the request
-  const headers = new Headers();
-  headers.append('Content-Type', 'application/json');
+  const semester = document.getElementById('semname').value;
+  const start = document.getElementById('start_date').value;
+  const end = document.getElementById('end_date').value;
+  const semdata = { name: semester, start_date: start, end_date: end };
 
   // Send the data to the server
-  fetch('url', {
+  fetch('https://rest-api-flask-python-fullcircle.onrender.com/register/schools', {
     method: 'POST',
     headers: headers,
-    body: JSON.stringify(data)
+    body: JSON.stringify(formdata)
+  })
+  .then((response) => {
+    if (response.ok) {
+      console.log('Form data submitted successfully');
+    } else {
+      throw new Error('Failed to submit form');
+    }
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+
+  fetch('https://rest-api-flask-python-fullcircle.onrender.com/register/semesters', {
+    method: 'POST',
+    headers: headers,
+    body: JSON.stringify(semdata)
   })
   .then((response) => {
     if (response.ok) {
@@ -160,8 +176,10 @@ studentform.addEventListener('submit', (e) => {
   .catch((error) => {
     console.error(error);
   });
+
+
 });
-*/
+
 
 
 // adds area for new class time

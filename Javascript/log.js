@@ -1,6 +1,9 @@
 
 const { ipcRenderer } = require('electron');
 
+
+let user;
+
 const loginForm = document.getElementById('login-form');
 console.log(loginForm);
 
@@ -33,6 +36,8 @@ loginForm.addEventListener('submit', (event) => {
       }
     })
     .then(data => {
+
+      user = data;
       // hide the loading spinner
       spinner.remove();
 
@@ -53,4 +58,29 @@ loginForm.addEventListener('submit', (event) => {
   
 });
 
+/*
+fetch('https://rest-api-flask-python-fullcircle.onrender.com/users', {
+  headers: {
+    'Authorization': 'Bearer ' + user.access_Token
+  }
+})
 
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error('Network response was not ok');
+      }
+    })
+    .then(data => {
+      ipcRenderer.send('access-token', data.access_token);
+     
+    })
+    .catch(error => {
+      // hide the loading spinner
+      spinner.remove();
+  
+      // display error message
+      alert('Fetch error: ' + error.message);
+    });
+    */
