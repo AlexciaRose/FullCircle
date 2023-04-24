@@ -91,28 +91,44 @@ $(document).ready(function() {
     $('.avatar').attr('src', 'Images/' + selectedImage);
   });
 });
-/*Modal Section*/
-<script>
-  const form = document.querySelector('form');
-  
-  form.addEventListener('submit', (event) {
-    event.preventDefault();
+/*Modal Code for Edit profile*/
+  // Get the modal
+  var modal = document.getElementById("exampleModal");
     
-    const formData = new FormData(form);
-    
-    if (event.submitter.name === 'update') {
-      // Handle the update button click
-      // Send an AJAX request to update the user's profile data
-    } else if (event.submitter.name === 'changePassword') {
-      // Handle the delete password button click
-      // Send an AJAX request to delete the user's password
-    } else if (event.submitter.name === 'deleteProfile') {
-      // Handle the delete profile button click
-      // Send an AJAX request to delete the user's profile
-    }
-  });
-</script>
+  // Get the button that opens the modal
+  var btn = document.getElementById("edit-profile");
 
+  // Get the <span> element that closes the modal
+  var span = document.querySelector("#exampleModal .btn-close");
+
+  // Get the form and submit button
+  var form = document.getElementById("tasks-form");
+  var submitBtn = document.querySelector("#exampleModal .modal-footer .btn-primary");
+
+  // When the user clicks on the button, open the modal
+  btn.onclick = function() {
+    modal.style.display = "block";
+  }
+
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+
+  // When the user clicks on the submit button, submit the form and close the modal
+  submitBtn.onclick = function() {
+    // Add your code to submit the form here
+    form.submit();
+    modal.style.display = "none";
+  }
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+  
 
 /*  
 // Update name
