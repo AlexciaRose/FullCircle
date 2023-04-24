@@ -4,7 +4,8 @@ const store = new Store();
 const accessToken = store.get('access_token');
 const refreshToken = store.get('refresh_token');
 
-
+  let userid;
+  
 
 const profContainer = document.getElementById('class-list');
 
@@ -13,9 +14,28 @@ const profContainer = document.getElementById('class-list');
 const headers = new Headers();
 headers.append('Authorization', 'Bearer ' + accessToken);
 
+
+get('https://rest-api-flask-python-fullcircle.onrender.com/users/')
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log(data);
+    // Do something with the data here
+  })
+  .catch((error) => {
+    console.error('Error fetching data:', error);
+  });
+
+/*
+
 fetch('https://rest-api-flask-python-fullcircle.onrender.com/courses', {
 headers: headers
 })
+
   .then(response => response.json())
   .then(data => {
     
@@ -120,15 +140,69 @@ $(document).ready(function() {
     // Add your code to submit the form here
     form.submit();
     modal.style.display = "none";
+    
+    // Add a confirmation message
+    var message = document.createElement("p");
+    message.textContent = "Changes saved successfully!";
+    message.style.color = "green";
+    message.style.marginTop = "10px";
+    modal.appendChild(message);
   }
+/*Connecting edit profile to the database*/
+/*
+// Get the modal
+const modal = document.getElementById("editModal");
+    
+// Get the button that opens the modal
+const btn = document.getElementById("edit-profile");
 
-  // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function(event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
+// Get the <span> element that closes the modal
+const span = document.querySelector("#editModal .btn-close");
+
+// Get the form and submit button
+const form = document.getElementById("edit-form");
+const submitBtn = document.querySelector("#editModal .modal-footer .btn-primary");
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  // Fetch data from API endpoint
+  fetch('https://rest-api-flask-python-fullcircle.onrender.com/users/', {
+headers: headers
+})
+    .then(response => response.json())
+    .then(data => {
+      // Update form fields with fetched data
+      document.getElementById("edit-fname").value = data.fname;
+      document.getElementById("edit-lname").value = data.lname;
+      document.getElementById("edit-email").value = data.email;
+      
+      // Display the modal
+      modal.style.display = "block";
+    })
+    .catch(error => {
+      console.error("Error fetching data from API:", error);
+    });
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks on the submit button, submit the form and close the modal
+submitBtn.onclick = function() {
+  // Add your code to submit the form here
+  form.submit();
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
   }
-  
+}
+
 
 /*  
 // Update name
