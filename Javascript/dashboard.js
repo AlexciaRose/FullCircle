@@ -31,7 +31,7 @@ let circularProgress = document.querySelector(".circular-progress"),
       totalTasks: 0
     }; 
 
-    let progressStartValue = 0,
+    let progressStartValue,
     progressEndValue = 1; //fix this with dummy data function 
     speed = 25;
 
@@ -116,11 +116,26 @@ fetch('https://rest-api-flask-python-fullcircle.onrender.com/tasks', {
 };
 
 
+
+
 // Display all tasks by default
   displayinclTasks(inclTasks);
 
 });
 
+
+fetch ('https://rest-api-flask-python-fullcircle.onrender.com/task_stats',{
+  headers: headers
+})
+
+.then(response => response.json())
+.then(data => {
+
+  let stats = data;
+  progressStartValue = stats.recent_completed_percentage;
+  
+
+});
 
 // sticky note
 const stickyNote = document.querySelector('.sticky-note');
@@ -137,3 +152,6 @@ textArea.addEventListener('input', () => {
 });
 
 textArea.value = localStorage.getItem('stickyNoteText') || '';
+
+
+
