@@ -14,8 +14,21 @@ const profContainer = document.getElementById('class-list');
 const headers = new Headers();
 headers.append('Authorization', 'Bearer ' + accessToken);
 
-
-get('https://rest-api-flask-python-fullcircle.onrender.com/users/')
+function get(url, headers) {
+  return fetch(url, {
+    headers: headers
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+}
+fetch ('https://rest-api-flask-python-fullcircle.onrender.com/users')
   .then((response) => {
     if (!response.ok) {
       throw new Error('Network response was not ok');
@@ -149,7 +162,7 @@ $(document).ready(function() {
     modal.appendChild(message);
   }
 /*Connecting edit profile to the database*/
-/*
+
 // Get the modal
 const modal = document.getElementById("editModal");
     
