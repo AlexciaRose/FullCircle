@@ -490,7 +490,7 @@ progress {
 }
 
 .fifty-chars {
-  width: auto;
+  width: 25px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

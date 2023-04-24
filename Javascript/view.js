@@ -28,7 +28,7 @@ const viewcontainer = document.querySelector('.classes-container'); // Replace w
             newCard.setAttribute('data-id', card.id);
   
               newCard.innerHTML=`<h5 class="card-title">${card.code}, ${card.name}</h5>
-              <p class="card-text mb- 2">${card.day_of_week_one} & ${card.day_of_week_two}, ${card.start_time} - ${card.end_time} <br> ${card.instructor_name}
+              <p class="card-text mb-2">${card.day_of_week_one} & ${card.day_of_week_two}, ${card.start_time} - ${card.end_time} <br> ${card.instructor_name}
               </p>
                                     `;
             viewcontainer.appendChild(newCard);

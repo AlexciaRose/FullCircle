@@ -10,10 +10,15 @@ const refreshToken = store.get('refresh_token');
 const profContainer = document.getElementById('class-list');
 
 
+const taskHeaders = new Headers(); //this header will be used for api requests that need the access token and a specification of content
+taskHeaders.append('Authorization', 'Bearer ' + accessToken); 
+
 
 const headers = new Headers();
-headers.append('Authorization', 'Bearer ' + accessToken);
+headers.append('Content-Type', 'application/json');
 
+
+/*
 function get(url, headers) {
   return fetch(url, {
     headers: headers
@@ -28,6 +33,8 @@ function get(url, headers) {
     console.error('Error:', error);
   });
 }
+*/
+/*
 fetch ('https://rest-api-flask-python-fullcircle.onrender.com/users')
   .then((response) => {
     if (!response.ok) {
@@ -42,8 +49,8 @@ fetch ('https://rest-api-flask-python-fullcircle.onrender.com/users')
   .catch((error) => {
     console.error('Error fetching data:', error);
   });
+*/
 
-/*
 
 fetch('https://rest-api-flask-python-fullcircle.onrender.com/courses', {
 headers: headers
@@ -65,7 +72,7 @@ headers: headers
             newClass.innerHTML =`<div class="card">
                                 <div class="card-body">
                                   <h5 class="card-title">${classe.name}</h5>
-                                  <p class="card-text">${classe.day_of_week}, ${classe.start_time} - ${classe.end_time} <br> ${classe.code} <br> ${classe.instructor_name}
+                                  <p class="card-text">${classe.day_of_week_one}, ${classe.day_of_week_two}, ${classe.start_time} - ${classe.end_time} <br> ${classe.code} <br> ${classe.instructor_name}
                                   </p>
                                 </div>
                               </div>`;
@@ -80,7 +87,7 @@ headers: headers
 displayClasses(classes);
 
   });
-
+/*
 //testing chart 
 var chartData = {
   labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
@@ -98,8 +105,8 @@ var chartData = {
       borderColor: 'rgba(54, 162, 235, 1)',
       borderWidth: 1
   }]
-};
-
+};*/
+/*
 // Get the chart canvas element
 var chartCanvas = document.getElementById('myChart');
 
@@ -117,14 +124,18 @@ var chart = new Chart(chartCanvas, {
       }
   }
 });
-/*Choosing profile picture*/
+
+*/
+/*Choosing profile picture
 $(document).ready(function() {
   $('#avatar-selector').change(function() {
     var selectedImage = $(this).val();
     $('.avatar').attr('src', 'Images/' + selectedImage);
   });
-});
-/*Modal Code for Edit profile*/
+});*/
+
+/*
+/*Modal Code for Edit profile
   // Get the modal
   var modal = document.getElementById("exampleModal");
     
@@ -161,58 +172,123 @@ $(document).ready(function() {
     message.style.marginTop = "10px";
     modal.appendChild(message);
   }
+*/
+
 /*Connecting edit profile to the database*/
 
 // Get the modal
-const modal = document.getElementById("editModal");
+const editmodal = document.getElementById("editModal");
     
 // Get the button that opens the modal
-const btn = document.getElementById("edit-profile");
+const editbtn = document.getElementById("edit-profile");
 
 // Get the <span> element that closes the modal
-const span = document.querySelector("#editModal .btn-close");
+const editspan = document.querySelector("#editModal .btn-close");
+let userdata;
+
+
+
 
 // Get the form and submit button
-const form = document.getElementById("edit-form");
-const submitBtn = document.querySelector("#editModal .modal-footer .btn-primary");
+const editform = document.getElementById("edit-form");
+const editsubmitBtn = document.querySelector("#editModal .modal-footer .btn-primary");
+let userID;
 
-// When the user clicks on the button, open the modal
-btn.onclick = function() {
-  // Fetch data from API endpoint
-  fetch('https://rest-api-flask-python-fullcircle.onrender.com/users/', {
+
+
+
+fetch('https://rest-api-flask-python-fullcircle.onrender.com/users', {
 headers: headers
 })
-    .then(response => response.json())
-    .then(data => {
-      // Update form fields with fetched data
-      document.getElementById("edit-fname").value = data.fname;
-      document.getElementById("edit-lname").value = data.lname;
-      document.getElementById("edit-email").value = data.email;
-      
-      // Display the modal
-      modal.style.display = "block";
-    })
-    .catch(error => {
-      console.error("Error fetching data from API:", error);
-    });
+.then((response) => {
+  if (!response.ok) {
+    throw new Error('Network response was not ok');
+  }
+  return response.json();
+})
+.then(data => {
+
+  userdata = data;
+
+  userID = data.id;
+  console.log(userID);
+
+});
+
+// When the user clicks on the button, open the modal
+editbtn.onclick = function() {
+  editmodal.style.display = "block";
+  
+editform.innerHTML=`<div class="mb-3">
+<label for="first-name" class="col-form-label">First Name:</label>
+<input type="text" class="form-control" name="first_name" id="edit-first-name" value="${userdata.first_name}" placeholder="${userdata.first_name}" required>
+</div>
+<div class="mb-3">
+<label for="last-name" class="col-form-label">Last Name:</label>
+<input type="text" class="form-control" name="last_name" id="edit-last-name" value="${userdata.last_name}" required>
+</div>
+<div class="mb-3">
+<label for="email" class="col-form-label">Email:</label>
+<input type="email" class="form-control" name="email" id="edit-email" value="${userdata.email}" required>
+</div>
+<div class="modal-footer">
+<input type="submit" class="btn btn-primary" value="Save Changes">
+<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+</div>`;
+
 }
 
+
+// When the user clicks on the button, open the modal
+editform.addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  const formData = new FormData(editform);
+
+  // Build the data object from the form data
+  const data = {};
+  formData.forEach((value, key) => {
+    data[key] = value;
+  });
+
+  // Fetch data from API endpoint
+  fetch(`https://rest-api-flask-python-fullcircle.onrender.com/users/${userID}`, {
+    method: 'PATCH',
+    headers: taskHeaders,
+    body: JSON.stringify(data)
+})
+        .then((response) => {
+          if (response.ok) {
+            console.log('Form data submitted successfully');
+            editmodal.style.display = "none";
+          } else {
+            throw new Error('Failed to submit form');
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+
+});
+
+
+
+
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
+editspan.onclick = function() {
+  editmodal.style.display = "none";
 }
 
 // When the user clicks on the submit button, submit the form and close the modal
-submitBtn.onclick = function() {
+/*editsubmitBtn.onclick = function() {
   // Add your code to submit the form here
-  form.submit();
-  modal.style.display = "none";
-}
+  editmodal.style.display = "none";
+} */
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
   if (event.target == modal) {
-    modal.style.display = "none";
+    editmodal.style.display = "none";
   }
 }
 

@@ -86,13 +86,13 @@
               <div class="modal-body">
                 <!--FORM-->
                 <form id="edit-form" method="post">
-                  <div class="mb-3">
+                 <!--<div class="mb-3">
                     <label for="first-name" class="col-form-label">First Name:</label>
-                    <input type="text" class="form-control" name="fname" id="edit-first-name" required>
+                    <input type="text" class="form-control" name="first_name" id="edit-first-name" required>
                   </div>
                   <div class="mb-3">
                     <label for="last-name" class="col-form-label">Last Name:</label>
-                    <input type="text" class="form-control" name="lname" id="edit-last-name" required>
+                    <input type="text" class="form-control" name="last_name" id="edit-last-name" required>
                   </div>
                   <div class="mb-3">
                     <label for="email" class="col-form-label">Email:</label>
@@ -102,7 +102,7 @@
                     <input type="submit" class="btn btn-primary" value="Save Changes">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                   </div>
-                </form>
+                </form>--> 
               </div>
             </div>
           </div>
@@ -180,9 +180,9 @@
             </div>-->  
     </div><br>
           <centre>
-          <div class="flex-container">
+        <!--<div class="flex-container">
             <div class="flex-item-left" id="myChartContainer"><canvas id="myChart"></canvas></div>
-          </div>
+          </div>-->  
         </centre>
 
     <script src="Javascript/profile.js"></script>
@@ -191,14 +191,11 @@
       function changeAvatar() {
         var img = document.getElementById("avatar-image");
         var select = document.getElementById("avatar-selector");
-        img.src = select.value;
-
-        
+        img.src = select.value;        
       }
     </script>
    
-    
-<!--password modal-->
+    <!--password modal
 <script>
   // Get the password change modal box
   var passwordModal = document.querySelector('#password-modal');
@@ -230,9 +227,9 @@
   });
 
   // When the user clicks the submit button, show the confirmation box
-  submitPasswordButton.addEventListener('click', function() {
+  /*submitPasswordButton.addEventListener('click', function() {
     confirmationBox.style.display = 'block';
-  });
+  });*/
 
   // When the user clicks the confirm button, submit the form and hide the confirmation box
   confirmButton.addEventListener('click', function() {
@@ -249,7 +246,8 @@
     confirmationBox.style.display = 'none';
   });
   
-</script>
+</script> -->
+
 <!--Modal script for delete account-->
 <script>
   // Get the modal

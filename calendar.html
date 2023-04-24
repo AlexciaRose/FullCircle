@@ -23,36 +23,7 @@
       //testing
       document.addEventListener('DOMContentLoaded', function() {
   var calendarEl = document.getElementById('calendar');
-  var calendar = new FullCalendar.Calendar(calendarEl, {
-    initialView: 'dayGridMonth',
-    events: [
-      {
-        title: 'Monday Class',
-        start: '2023-04-24',
-        classNames: ['monday-class']
-      },
-      {
-        title: 'Tuesday Class',
-        start: '2023-04-25',
-        classNames: ['tuesday-class']
-      },
-      {
-        title: 'Wednesday Class',
-        start: '2023-04-26',
-        classNames: ['wednesday-class']
-      },
-      {
-        title: 'Thursday Class',
-        start: '2023-04-27',
-        classNames: ['thursday-class']
-      },
-      {
-        title: 'Friday Class',
-        start: '2023-04-28',
-        classNames: ['friday-class']
-      }
-    ]
-  });
+
   calendar.render();
 });
 

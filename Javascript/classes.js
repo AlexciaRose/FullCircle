@@ -11,7 +11,7 @@ const courseID = store.get('course_id');
 // Select the form element
 const classform = document.getElementById('class-form');
 
-
+console.log(classform)
   classform.addEventListener('submit', function(event) {
   event.preventDefault();
 
@@ -45,12 +45,13 @@ const classform = document.getElementById('class-form');
     }
   })
   .catch((error) => {
-    console.error(error);
+    console.error(error); 
+    console.log('Form data submitted successfully');
+  ipcRenderer.send('form-submitted', data, 'view.html');
   });
-  console.log('Form data submitted successfully');
-      ipcRenderer.send('form-submitted', data, 'view.html');
- /* console.log('Form data submitted successfully');
-  ipcRenderer.send('form-submitted', data, 'view.html');*/
+     
+     
+
   
 });
 
